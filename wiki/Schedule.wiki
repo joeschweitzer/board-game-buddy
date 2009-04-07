@@ -1,0 +1,26 @@
+#summary Schedule for BGB
+
+= Introduction =
+
+Here is the anticipated quarterly schedule/goals for BGB:
+
+
+= Details =
+
+Q1 (Jan-Mar) 2009
+
+ * Initial thoughts for gaming library (really for a couple of years)
+
+Q2 (Apr-Jun) 2009
+ 
+ * Start creating initial implementation-neutral documentation for game library
+    * Decide where documentation should be hosted
+ * Start creating initial repository for game library source code
+    * Decide where repository should be hosted
+ * Start creating web presence
+    * Decide where web presence should be hosted (www.boardgamebuddy.com?)
+ * Implement Tic-Tac-Toe in Python
+
+Q3 (Jul-Sep) 2009
+
+Q4 (Oct-Dec) 2009
