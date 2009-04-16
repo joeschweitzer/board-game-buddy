@@ -6,7 +6,15 @@ A person actively participating in the game.  Games can have one or more players
 
 = Board = 
 
-Board which acts as the "user interface" for playing a board game.  One is normally able to see the current state of the game by looking at the board and players can interact with the board in order to move the game along.
+A board acts as the "user interface" for playing a board game.  One is normally able to see the current state of the game by looking at the board and players can interact with the board in order to move the game along.
+
+= Space =
+
+A space is a distinct region on the board.  Spaces may be occupied by pieces or may be empty.  Spaces may have different attributes and may be influenced by different rules of the game at different times.
+
+= Piece =
+
+A distinct entity that players use to interact with the board and with other pieces.  Pieces often act as "extensions" of the players themselves - the players move them instead of moving themselves.  Pieces often go on board spaces and may enter play or be removed from play at various times.
 
 = Move =
 
