@@ -1,0 +1,8 @@
+
+bgb - code
+        python - python framework for bgb
+                core - core framework
+                examples - game examples
+docs - documentation
+        design - design documentation
+
