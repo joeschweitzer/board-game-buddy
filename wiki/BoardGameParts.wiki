@@ -30,32 +30,30 @@ An all-encompassing entity that tracks the board game at the highest level.  To 
 
 ----
 
-= PlayerManager =
+= Player Manager =
 
 Manager for all player related aspects of the game.  Handles allowing players to join or quit.
 
-= BoardManager = 
+= Board Manager = 
 
 Manager for all board related aspects of the game.  Handles creating the initial board setup, interactions between the players and the board, and displaying the board to the players.
 
-= MoveManager =
+= Move Manager =
 
 Manager for all move related aspects of the game.  Keeps track of all of the moves played.  Knows if a move is valid or not before allowing it to be played.  Knows the allowable moves that can be played.
 
-= TurnManager =
+= Turn Manager =
 
 Manager for all turn related aspects of the game.  Keeps track of all of the turns played.  Knows whose turn it is and the order of turns (including who goes first).  Knows anything special that happens at the beginning and ending of a turn.
 
-= RoundManager =
+= Round Manager =
 
 Manager for all round related aspects of the game.  Keeps track of all of the rounds played.  Knows anything special that happens at the beginning and ending of a round.
 
-= ScoreManager =
+= Score Manager =
 
 Manager for all score related aspects of the game.  Keeps track of all of the scores for the players.
 
-= GameManager =
+= Game Manager =
 
 Manager for all general game related aspects of the game.  Knows the general state of the game including whether the game is over or not (if someone has won or lost).
-
-
