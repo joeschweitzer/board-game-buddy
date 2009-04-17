@@ -15,8 +15,10 @@ Q2 (Apr-Jun) 2009
  
  * Start creating initial implementation-neutral documentation for game library
     * Decide where documentation should be hosted
+    * *DONE* code.google.com 
  * Start creating initial repository for game library source code
     * Decide where repository should be hosted
+    * *DONE* code.google.com 
  * Start creating web presence
     * Decide where web presence should be hosted (www.boardgamebuddy.com?)
  * Implement Tic-Tac-Toe in Python
