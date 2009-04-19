@@ -17,4 +17,20 @@
 # Output/Print out board
 # Input for moves index?
 
-import bgb
+from pybgb.player.player import *
+from pybgb.player.playermanager import *
+from pybgb.board.board import *
+
+player1 = Player("player1")
+player2 = Player("player2")
+
+player_manager = PlayerManager()
+player_manager.add_player(player1)
+player_manager.add_player(player2)
+
+print player_manager.players_ready()
+
+board = TicTacToeBoard()
+
+
+
