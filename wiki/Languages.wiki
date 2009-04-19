@@ -2,7 +2,7 @@
 
 = Back End =
 
-  * Python
+  * Python (current development)
   * Ruby
   * Java
   * Objective-C
@@ -20,33 +20,35 @@
   * Perl? 
   * Smalltalk?
 
+
 = Front End =
 
 == Web ==
 
-Command-line
-Flash?
-HTML/Javascript/Ajax - & libraries (Prototype, etc.)
-Web Tool Kits (Google, Yahoo, etc.)
-JSP
-PHP
-Java Applets
-Curl
-Cold Fusion?
-Lasso?
+  * Flash?
+  * HTML/Javascript/Ajax - & libraries (Prototype, etc.)
+  * Web Tool Kits (Google, Yahoo, etc.)
+  * JSP
+  * PHP
+  * Java Applets
+  * Curl
+  * Cold Fusion?
+  * Lasso?
 
 == Non-Web ==
 
-PyGTK
-Java
-.NET
-Cocoa
+  * Various command-lines 
+    * Python (current development)
+  * PyGTK
+  * Java
+  * .NET
+  * Cocoa
 
 
 = AI =
 
-Lisp
-Prolog
-Scheme
-Smalltalk
-Scala
+  * Lisp
+  * Prolog
+  * Scheme
+  * Smalltalk
+  * Scala
