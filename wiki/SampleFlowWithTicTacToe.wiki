@@ -1,0 +1,58 @@
+#summary Flow of steps/calls that a game might consist of
+
+= Setup =
+
+  # (UI) Some way for players to find each other/communicate with each other with desire to play a game
+  # Create players/wait until enough players join
+  # Infrastructure
+    # Create player manager and add players to player manager
+    # Create empty board
+    # Create board manager and add board to board manager as main/only board
+    # Create move manager
+    # Create turn manager
+    # Create round manager
+    # Create score manager
+    # Create game manager
+    # Create whatever connection/listeners that need to be created to facilitate communication between these managers
+  # Ask turn manager who goes first
+    # Turn manager asks first player manager who goes first
+      # (UI) First player manager either figures this out on its own (e.g. random) or receives input from players to determine who goes first
+
+= Game = 
+
+    # Game manager starts game
+    # Round manager starts round 1
+    # Turn manager starts turn 1-1 with player 1 to move
+    # (UI) Move manager waits for a move from player 1
+    # Move manager receives a move from player 1 and validates it
+    # Move manager executes the move from player 1
+    # Turn manager ends turn 1-1
+    # Turn manager starts turn 1-2 with player 2 to move
+    # (UI) Move manager waits for a move from player 2
+    # Move manager receives a move from player 2 and validates it
+    # Move manager executes the move from player 2
+    # Turn manager ends turn 1-2
+    # Round manager ends round 1
+    # Round manager starts round 2
+    # Turn manager starts turn 2-1 with player 1 to move
+    # Turn manager/round manager continue
+    # After each move, score manager is consulted 
+    # Score manager calculates whether or not game has been won/lost/tie and if won/lost who the winner is
+    # Once score manager determines this, the game is over 
+
+= TicTacToe Command Line Sample =
+
+  # User A sees an empty "table" and joins
+  # User B sees the table with one spot left and joins
+  # Infrastructure created
+    # Empty tic tac toe board with 9 spaces (3x3)
+  # Turn manager randomly picks User A as Player 1 (X) and User B and Player 2 (O)
+  # Game/round 1/turn 1-1 starts with player 1 to move
+  # Player 1 inputs their move as placing an X on an empty space
+  # Move validated, score manager consulted, turn ends, game continues with turn 1-2 and player 2 to move
+  # Player 2 inputs their move as placing an O on an empty space
+  # Move validated, score manager consulted, turn ends, round ends
+  # Round 2/turn 2-1 starts with player 1 to move
+  # ...
+  # Player enters a move that either wins the game or fills up all 9 spaces with no winner (i.e. a tie)
+  # Game ends
