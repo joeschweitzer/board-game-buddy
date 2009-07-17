@@ -40,7 +40,7 @@
     # Score manager calculates whether or not game has been won/lost/tie and if won/lost who the winner is
     # Once score manager determines this, the game is over 
 
-= TicTacToe Command Line Sample =
+= Tic Tac Toe Command Line Sample =
 
   # User A sees an empty "table" and joins
   # User B sees the table with one spot left and joins
