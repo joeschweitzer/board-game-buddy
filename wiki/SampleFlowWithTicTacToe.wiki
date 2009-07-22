@@ -56,3 +56,99 @@
   # ...
   # Player enters a move that either wins the game or fills up all 9 spaces with no winner (i.e. a tie)
   # Game ends
+
+= Actual Code =
+
+  # tm = new TableManager();
+  # tm.listen()
+  # userA = new User()
+  # userA.login()
+  # table = tm.createNewTable(userA)
+  # userB = new User()
+  # userB.login()
+  # tm.addPlayer(userB, table)
+  # game = new TicTacToeGame()
+  # game.setStatus("Initializing")
+  # game.init()
+    # boardManager = new TicTacToeBoardManager()
+    # board = boardManager.createNewBoard()
+    # board.init()
+    # boardManager.addBoard(board)
+    # boardManager.init()
+    # pieceManager = new TicTacToePieceManager()
+    # pieceManager.init()
+    # moveManager = new TicTacToeMoveManager()
+    # moveManager.init()
+    # turnManager = new TicTacToeTurnManager()
+    # turnManager.init()
+    # roundManager = new TicTacToeRoundManager()
+    # roundManager.init()
+    # playerManager = new TicTacToePlayerManager()
+    # player1 = new Player(userA)
+    # player1.init()
+    # player2 = new Player(userB)
+    # player2.init()
+    # playerManager.addPlayer(player1)
+    # playerManager.addPlayer(player2)
+    # playerManager.init()
+    # scoreManager = new TicTacToeScoreManager()
+    # scoreManager.init()
+  # game.setStatus("Determining player order")
+  # firstPlayer = turnManager.getFirstPlayer()
+  # secondPlayer = turnManager.getSecondPlayer()
+  # pieceManager.assignPieces("X", firstPlayer)
+  # pieceManager.assignPieces("O", secondPlayer)
+  # round1 = roundManager.createNewRound()
+  # turn1_1 = turnManager.createNewTurn()
+  # round1.setCurrentTurn(turn1_1)
+  # turn1_1.setCurrentPlayer(firstPlayer)
+  # game.setStatus("In progress")
+  # move = new TicTacToeMove()
+  # pieceX = playerManager.getPiece(firstPlayer)
+  # space = boardManager.getSpace(CENTER)
+  # move.setPlayer(firstPlayer)
+  # move.setPiece(pieceX)
+  # move.setSpace(space)
+  # moveManager.validateMove(move)
+  # moveManager.makeMove(move)
+    # boardManager.movePiece(pieceX, space)
+    # scoreManager.isGameOver()
+  # turn1_2 = turnManager.createNewTurn()
+  # round1.setCurrentTurn(turn1_2)
+  # turn1_2.setCurrentPlayer(secondPlayer)
+  # move = new TicTacToeMove()
+  # pieceO = playerManager.getPiece(secondPlayer)
+  # space = boardManager.getSpace(UPPER_LEFT)
+  # move.setPlayer(secondPlayer)
+  # move.setPiece(pieceO)
+  # move.setSpace(space)
+  # moveManager.validateMove(move)
+  # moveManager.makeMove(move)
+    # boardManager.movePiece(pieceO, space)
+    # scoreManager.isGameOver()
+  # .....
+  # game.setStatus("Game over")
+
+
+Event manager to listen for events and then route notifications to the proper places at the proper time - wait to hear back for acknowledgement from everyone to make sure event is ok?
+
+  # Managers have events that they fire (and know when they should fire them)
+  # Managers have event handlers that are called when certain events are fired (and know how they should handle them)
+  # Event manager configured with events it should care about and which managers should be notified (and   # potentially what order they should be notified if that matters)
+  # Something happens in manager and event is fired
+  # Event manager is notified with event
+  # Event manager looks up to see if it should notify anyone about the event (and who should be notified - and perhaps in what order)
+  # Event manager notifies first manager that event occurred
+  # Manager processes event and perhaps fires an event of its own
+  # Event manager has to figure out which event takes priority if more than one event is being fired
+  # Eventually, events get resolved and everyone is waiting again
+
+
+Events:
+
+
+
+
+
+  
+    
