@@ -1,4 +1,4 @@
-package com.google.code.bgb.tictactoe.score;
+package com.boardgamebuddy.tictactoe.score;
 
 import com.boardgamebuddy.basic.event.MoveEvent;
 import com.boardgamebuddy.core.board.BoardManager;
@@ -8,9 +8,9 @@ import com.boardgamebuddy.core.event.EventManager;
 import com.boardgamebuddy.core.game.Game;
 import com.boardgamebuddy.core.player.Player;
 import com.boardgamebuddy.core.score.ScoreManager;
-import com.google.code.bgb.tictactoe.board.TicTacToeBoard;
-import com.google.code.bgb.tictactoe.event.TicTacToeEvent;
-import com.google.code.bgb.tictactoe.event.TicTacToeEvent.TicTacToeEventType;
+import com.boardgamebuddy.tictactoe.board.TicTacToeBoard;
+import com.boardgamebuddy.tictactoe.event.TicTacToeEvent;
+import com.boardgamebuddy.tictactoe.event.TicTacToeEvent.TicTacToeEventType;
 
 public class TicTacToeScoreManager implements ScoreManager, EventListener {
 

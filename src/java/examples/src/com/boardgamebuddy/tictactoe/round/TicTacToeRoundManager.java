@@ -1,12 +1,12 @@
-package com.google.code.bgb.tictactoe.round;
+package com.boardgamebuddy.tictactoe.round;
 
 import com.boardgamebuddy.core.event.Event;
 import com.boardgamebuddy.core.event.EventListener;
 import com.boardgamebuddy.core.event.EventManager;
 import com.boardgamebuddy.core.game.Game;
 import com.boardgamebuddy.core.round.RoundManager;
-import com.google.code.bgb.tictactoe.event.TicTacToeEvent;
-import com.google.code.bgb.tictactoe.event.TicTacToeEvent.TicTacToeEventType;
+import com.boardgamebuddy.tictactoe.event.TicTacToeEvent;
+import com.boardgamebuddy.tictactoe.event.TicTacToeEvent.TicTacToeEventType;
 
 public class TicTacToeRoundManager implements RoundManager, EventListener {
 

@@ -1,4 +1,4 @@
-package com.google.code.bgb.tictactoe.game;
+package com.boardgamebuddy.tictactoe.game;
 
 import java.util.Collection;
 
@@ -15,16 +15,16 @@ import com.boardgamebuddy.core.round.RoundManager;
 import com.boardgamebuddy.core.score.ScoreManager;
 import com.boardgamebuddy.core.turn.TurnManager;
 import com.boardgamebuddy.core.user.User;
-import com.google.code.bgb.tictactoe.board.TicTacToeBoard;
-import com.google.code.bgb.tictactoe.board.TicTacToeBoardManager;
-import com.google.code.bgb.tictactoe.event.TicTacToeEventManager;
-import com.google.code.bgb.tictactoe.event.TicTacToeEvent.TicTacToeEventType;
-import com.google.code.bgb.tictactoe.move.TicTacToeMoveManager;
-import com.google.code.bgb.tictactoe.player.TicTacToePlayer;
-import com.google.code.bgb.tictactoe.player.TicTacToePlayerManager;
-import com.google.code.bgb.tictactoe.round.TicTacToeRoundManager;
-import com.google.code.bgb.tictactoe.score.TicTacToeScoreManager;
-import com.google.code.bgb.tictactoe.turn.TicTacToeTurnManager;
+import com.boardgamebuddy.tictactoe.board.TicTacToeBoard;
+import com.boardgamebuddy.tictactoe.board.TicTacToeBoardManager;
+import com.boardgamebuddy.tictactoe.event.TicTacToeEventManager;
+import com.boardgamebuddy.tictactoe.event.TicTacToeEvent.TicTacToeEventType;
+import com.boardgamebuddy.tictactoe.move.TicTacToeMoveManager;
+import com.boardgamebuddy.tictactoe.player.TicTacToePlayer;
+import com.boardgamebuddy.tictactoe.player.TicTacToePlayerManager;
+import com.boardgamebuddy.tictactoe.round.TicTacToeRoundManager;
+import com.boardgamebuddy.tictactoe.score.TicTacToeScoreManager;
+import com.boardgamebuddy.tictactoe.turn.TicTacToeTurnManager;
 
 public class TicTacToeGame implements Game, EventListener {
 

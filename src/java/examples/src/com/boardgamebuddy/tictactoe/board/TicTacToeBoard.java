@@ -1,4 +1,4 @@
-package com.google.code.bgb.tictactoe.board;
+package com.boardgamebuddy.tictactoe.board;
 
 import com.boardgamebuddy.basic.board.SquareBoard;
 

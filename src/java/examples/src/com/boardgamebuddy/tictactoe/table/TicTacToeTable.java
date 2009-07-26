@@ -1,4 +1,4 @@
-package com.google.code.bgb.tictactoe.table;
+package com.boardgamebuddy.tictactoe.table;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -6,7 +6,7 @@ import java.util.Collection;
 import com.boardgamebuddy.core.game.Game;
 import com.boardgamebuddy.core.table.Table;
 import com.boardgamebuddy.core.user.User;
-import com.google.code.bgb.tictactoe.game.TicTacToeGame;
+import com.boardgamebuddy.tictactoe.game.TicTacToeGame;
 
 public class TicTacToeTable implements Table {
 
