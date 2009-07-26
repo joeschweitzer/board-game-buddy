@@ -2,9 +2,9 @@
 
 = Back End =
 
-  * Python (current development)
+  * Java (current development)
+  * Python
   * Ruby
-  * Java
   * Objective-C
   * C++
   * PHP
@@ -39,7 +39,7 @@
 == Non-Web ==
 
   * Various command-lines 
-    * Python (current development)
+  * Python
   * PyGTK
   * Java
   * .NET
