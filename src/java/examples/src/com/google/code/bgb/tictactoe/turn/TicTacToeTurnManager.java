@@ -3,13 +3,13 @@ package com.google.code.bgb.tictactoe.turn;
 import java.util.Collection;
 import java.util.Iterator;
 
-import com.google.code.bgb.basic.event.MoveEvent;
-import com.google.code.bgb.core.event.Event;
-import com.google.code.bgb.core.event.EventListener;
-import com.google.code.bgb.core.event.EventManager;
-import com.google.code.bgb.core.game.Game;
-import com.google.code.bgb.core.player.Player;
-import com.google.code.bgb.core.turn.TurnManager;
+import com.boardgamebuddy.basic.event.MoveEvent;
+import com.boardgamebuddy.core.event.Event;
+import com.boardgamebuddy.core.event.EventListener;
+import com.boardgamebuddy.core.event.EventManager;
+import com.boardgamebuddy.core.game.Game;
+import com.boardgamebuddy.core.player.Player;
+import com.boardgamebuddy.core.turn.TurnManager;
 import com.google.code.bgb.tictactoe.event.TicTacToeEvent;
 import com.google.code.bgb.tictactoe.event.TicTacToeEvent.TicTacToeEventType;
 

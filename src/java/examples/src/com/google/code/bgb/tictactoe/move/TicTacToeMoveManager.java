@@ -1,11 +1,11 @@
 package com.google.code.bgb.tictactoe.move;
 
-import com.google.code.bgb.basic.event.MoveEvent;
-import com.google.code.bgb.core.event.EventManager;
-import com.google.code.bgb.core.game.Game;
-import com.google.code.bgb.core.move.Move;
-import com.google.code.bgb.core.move.MoveManager;
-import com.google.code.bgb.core.player.Player;
+import com.boardgamebuddy.basic.event.MoveEvent;
+import com.boardgamebuddy.core.event.EventManager;
+import com.boardgamebuddy.core.game.Game;
+import com.boardgamebuddy.core.move.Move;
+import com.boardgamebuddy.core.move.MoveManager;
+import com.boardgamebuddy.core.player.Player;
 import com.google.code.bgb.tictactoe.event.TicTacToeEvent.TicTacToeEventType;
 
 public class TicTacToeMoveManager implements MoveManager {

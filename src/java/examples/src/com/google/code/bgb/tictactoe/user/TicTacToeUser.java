@@ -1,6 +1,6 @@
 package com.google.code.bgb.tictactoe.user;
 
-import com.google.code.bgb.core.user.User;
+import com.boardgamebuddy.core.user.User;
 
 public class TicTacToeUser implements User {
 

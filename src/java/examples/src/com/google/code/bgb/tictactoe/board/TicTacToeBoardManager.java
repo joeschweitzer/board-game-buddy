@@ -1,7 +1,7 @@
 package com.google.code.bgb.tictactoe.board;
 
-import com.google.code.bgb.core.board.Board;
-import com.google.code.bgb.core.board.BoardManager;
+import com.boardgamebuddy.core.board.Board;
+import com.boardgamebuddy.core.board.BoardManager;
 
 public class TicTacToeBoardManager implements BoardManager {
 

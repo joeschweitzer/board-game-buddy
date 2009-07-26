@@ -1,10 +1,10 @@
 package com.google.code.bgb.tictactoe.round;
 
-import com.google.code.bgb.core.event.Event;
-import com.google.code.bgb.core.event.EventListener;
-import com.google.code.bgb.core.event.EventManager;
-import com.google.code.bgb.core.game.Game;
-import com.google.code.bgb.core.round.RoundManager;
+import com.boardgamebuddy.core.event.Event;
+import com.boardgamebuddy.core.event.EventListener;
+import com.boardgamebuddy.core.event.EventManager;
+import com.boardgamebuddy.core.game.Game;
+import com.boardgamebuddy.core.round.RoundManager;
 import com.google.code.bgb.tictactoe.event.TicTacToeEvent;
 import com.google.code.bgb.tictactoe.event.TicTacToeEvent.TicTacToeEventType;
 

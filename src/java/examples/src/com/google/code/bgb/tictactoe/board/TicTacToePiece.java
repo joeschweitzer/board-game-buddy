@@ -1,7 +1,7 @@
 package com.google.code.bgb.tictactoe.board;
 
-import com.google.code.bgb.core.board.Piece;
-import com.google.code.bgb.core.player.Player;
+import com.boardgamebuddy.core.board.Piece;
+import com.boardgamebuddy.core.player.Player;
 
 public class TicTacToePiece implements Piece {
 

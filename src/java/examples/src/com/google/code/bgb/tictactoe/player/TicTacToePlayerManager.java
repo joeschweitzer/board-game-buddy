@@ -3,8 +3,8 @@ package com.google.code.bgb.tictactoe.player;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import com.google.code.bgb.core.player.Player;
-import com.google.code.bgb.core.player.PlayerManager;
+import com.boardgamebuddy.core.player.Player;
+import com.boardgamebuddy.core.player.PlayerManager;
 
 
 public class TicTacToePlayerManager implements PlayerManager {

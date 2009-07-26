@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.google.code.bgb.core.event.Event;
-import com.google.code.bgb.core.event.EventListener;
-import com.google.code.bgb.core.event.EventManager;
+import com.boardgamebuddy.core.event.Event;
+import com.boardgamebuddy.core.event.EventListener;
+import com.boardgamebuddy.core.event.EventManager;
 
 public class TicTacToeEventManager implements EventManager {
 
