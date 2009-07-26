@@ -1,13 +1,13 @@
 package com.google.code.bgb.tictactoe.score;
 
-import com.google.code.bgb.basic.event.MoveEvent;
-import com.google.code.bgb.core.board.BoardManager;
-import com.google.code.bgb.core.event.Event;
-import com.google.code.bgb.core.event.EventListener;
-import com.google.code.bgb.core.event.EventManager;
-import com.google.code.bgb.core.game.Game;
-import com.google.code.bgb.core.player.Player;
-import com.google.code.bgb.core.score.ScoreManager;
+import com.boardgamebuddy.basic.event.MoveEvent;
+import com.boardgamebuddy.core.board.BoardManager;
+import com.boardgamebuddy.core.event.Event;
+import com.boardgamebuddy.core.event.EventListener;
+import com.boardgamebuddy.core.event.EventManager;
+import com.boardgamebuddy.core.game.Game;
+import com.boardgamebuddy.core.player.Player;
+import com.boardgamebuddy.core.score.ScoreManager;
 import com.google.code.bgb.tictactoe.board.TicTacToeBoard;
 import com.google.code.bgb.tictactoe.event.TicTacToeEvent;
 import com.google.code.bgb.tictactoe.event.TicTacToeEvent.TicTacToeEventType;

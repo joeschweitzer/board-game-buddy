@@ -1,15 +1,15 @@
 package com.google.code.bgb.tictactoe;
 
-import com.google.code.bgb.basic.move.BasicMove;
-import com.google.code.bgb.basic.table.BasicTableManager;
-import com.google.code.bgb.core.board.Piece;
-import com.google.code.bgb.core.board.Space;
-import com.google.code.bgb.core.game.Game;
-import com.google.code.bgb.core.move.Move;
-import com.google.code.bgb.core.player.Player;
-import com.google.code.bgb.core.table.Table;
-import com.google.code.bgb.core.table.TableManager;
-import com.google.code.bgb.core.user.User;
+import com.boardgamebuddy.basic.move.BasicMove;
+import com.boardgamebuddy.basic.table.BasicTableManager;
+import com.boardgamebuddy.core.board.Piece;
+import com.boardgamebuddy.core.board.Space;
+import com.boardgamebuddy.core.game.Game;
+import com.boardgamebuddy.core.move.Move;
+import com.boardgamebuddy.core.player.Player;
+import com.boardgamebuddy.core.table.Table;
+import com.boardgamebuddy.core.table.TableManager;
+import com.boardgamebuddy.core.user.User;
 import com.google.code.bgb.tictactoe.board.TicTacToePiece;
 import com.google.code.bgb.tictactoe.board.TicTacToePiece.PieceType;
 import com.google.code.bgb.tictactoe.table.TicTacToeTable;

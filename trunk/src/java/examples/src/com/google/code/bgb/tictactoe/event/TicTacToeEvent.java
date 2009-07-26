@@ -1,6 +1,6 @@
 package com.google.code.bgb.tictactoe.event;
 
-import com.google.code.bgb.core.event.Event;
+import com.boardgamebuddy.core.event.Event;
 
 public class TicTacToeEvent implements Event {
 

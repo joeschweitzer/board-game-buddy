@@ -1,6 +1,6 @@
 package com.google.code.bgb.tictactoe.player;
 
-import com.google.code.bgb.core.player.Player;
+import com.boardgamebuddy.core.player.Player;
 
 public class TicTacToePlayer implements Player {
 
