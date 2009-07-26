@@ -1,4 +1,4 @@
-package com.google.code.bgb.tictactoe;
+package com.boardgamebuddy.tictactoe;
 
 import com.boardgamebuddy.basic.move.BasicMove;
 import com.boardgamebuddy.basic.table.BasicTableManager;
@@ -10,10 +10,10 @@ import com.boardgamebuddy.core.player.Player;
 import com.boardgamebuddy.core.table.Table;
 import com.boardgamebuddy.core.table.TableManager;
 import com.boardgamebuddy.core.user.User;
-import com.google.code.bgb.tictactoe.board.TicTacToePiece;
-import com.google.code.bgb.tictactoe.board.TicTacToePiece.PieceType;
-import com.google.code.bgb.tictactoe.table.TicTacToeTable;
-import com.google.code.bgb.tictactoe.user.TicTacToeUser;
+import com.boardgamebuddy.tictactoe.board.TicTacToePiece;
+import com.boardgamebuddy.tictactoe.board.TicTacToePiece.PieceType;
+import com.boardgamebuddy.tictactoe.table.TicTacToeTable;
+import com.boardgamebuddy.tictactoe.user.TicTacToeUser;
 
 public class TicTacToe {
 	

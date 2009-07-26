@@ -1,4 +1,4 @@
-package com.google.code.bgb.tictactoe.player;
+package com.boardgamebuddy.tictactoe.player;
 
 import java.util.ArrayList;
 import java.util.Collection;

@@ -1,4 +1,4 @@
-package com.google.code.bgb.tictactoe.user;
+package com.boardgamebuddy.tictactoe.user;
 
 import com.boardgamebuddy.core.user.User;
 

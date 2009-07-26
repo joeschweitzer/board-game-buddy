@@ -1,4 +1,4 @@
-package com.google.code.bgb.tictactoe.event;
+package com.boardgamebuddy.tictactoe.event;
 
 import java.util.ArrayList;
 import java.util.HashMap;

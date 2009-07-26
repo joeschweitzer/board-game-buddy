@@ -1,4 +1,4 @@
-package com.google.code.bgb.tictactoe.turn;
+package com.boardgamebuddy.tictactoe.turn;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -10,8 +10,8 @@ import com.boardgamebuddy.core.event.EventManager;
 import com.boardgamebuddy.core.game.Game;
 import com.boardgamebuddy.core.player.Player;
 import com.boardgamebuddy.core.turn.TurnManager;
-import com.google.code.bgb.tictactoe.event.TicTacToeEvent;
-import com.google.code.bgb.tictactoe.event.TicTacToeEvent.TicTacToeEventType;
+import com.boardgamebuddy.tictactoe.event.TicTacToeEvent;
+import com.boardgamebuddy.tictactoe.event.TicTacToeEvent.TicTacToeEventType;
 
 public class TicTacToeTurnManager implements TurnManager, EventListener {
 
