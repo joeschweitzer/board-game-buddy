@@ -35,16 +35,24 @@ package com.boardgamebuddy.tictactoe.board;
 import com.boardgamebuddy.core.board.Board;
 import com.boardgamebuddy.core.board.BoardManager;
 
+/**
+ * Implementation of board manager for TicTacToe
+ */
 public class TicTacToeBoardManager implements BoardManager {
 
 	private Board board;
 	
-	public void addBoard(Board board) {
-		this.board = board;
+	/**
+	 * Adds the given board
+	 */
+	public final void addBoard(final Board boardIn) {
+		this.board = boardIn;
 	}
 
-	public Board getMainBoard() {
+	/**
+	 * Retrieves the main board 
+	 */
+	public final Board getMainBoard() {
 		return board;
 	}
-
 }

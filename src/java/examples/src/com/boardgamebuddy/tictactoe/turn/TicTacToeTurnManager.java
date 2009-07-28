@@ -45,6 +45,9 @@ import com.boardgamebuddy.core.turn.TurnManager;
 import com.boardgamebuddy.tictactoe.event.TicTacToeEvent;
 import com.boardgamebuddy.tictactoe.event.TicTacToeEvent.TicTacToeEventType;
 
+/**
+ * Turn manager implementation for TicTacToe
+ */
 public class TicTacToeTurnManager implements TurnManager, EventListener {
 
 	private Game game;
@@ -53,26 +56,35 @@ public class TicTacToeTurnManager implements TurnManager, EventListener {
 	private Player secondPlayer;
 	private Player currentPlayer;
 	
-	public TicTacToeTurnManager(Game game) {
-		this.game = game;
+	/**
+	 * Constructor for game
+	 */
+	public TicTacToeTurnManager(final Game gameIn) {
+		this.game = gameIn;
 		this.eventManager = this.game.getEventManager();
 		
 		eventManager.registerListener(
 				TicTacToeEventType.MOVE_COMPLETE.toString(), this);
 	}
 	
-	public void orderPlayers(Collection<Player> players) {
+	/**
+	 * Order the given players for who goes first, second, etc.
+	 */
+	public final void orderPlayers(final Collection<Player> players) {
 		Iterator<Player> iter = players.iterator();
 		firstPlayer = iter.next();
 		secondPlayer = iter.next();
 		currentPlayer = firstPlayer;
 	}
 	
-	public void eventRaised(Event event) {
-		if(TicTacToeEventType.MOVE_COMPLETE.equals(
+	/**
+	 * Callback for when event is raised during the game
+	 */
+	public final void eventRaised(final Event event) {
+		if (TicTacToeEventType.MOVE_COMPLETE.equals(
 				TicTacToeEventType.valueOf(event.getEventType()))) {
 			MoveEvent moveEvent = (MoveEvent) event;
-			if(firstPlayer.equals(moveEvent.getMove().getPlayer())) {
+			if (firstPlayer.equals(moveEvent.getMove().getPlayer())) {
 				currentPlayer = secondPlayer;
 			} else {
 				currentPlayer = firstPlayer;
@@ -83,7 +95,10 @@ public class TicTacToeTurnManager implements TurnManager, EventListener {
 		}
 	}
 
-	public Player getCurrentPlayer() {
+	/**
+	 * Returns the player for the current turn
+	 */
+	public final Player getCurrentPlayer() {
 		return currentPlayer;
 	}
 	

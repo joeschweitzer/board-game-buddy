@@ -34,15 +34,24 @@ package com.boardgamebuddy.tictactoe.user;
 
 import com.boardgamebuddy.core.user.User;
 
+/**
+ * User implementation for TicTacToe
+ */
 public class TicTacToeUser implements User {
 
 	private String userName;
 	
-	public TicTacToeUser(String userName) {
-		this.userName = userName;
+	/**
+	 * Constructor for user name
+	 */
+	public TicTacToeUser(final String userNameIn) {
+		this.userName = userNameIn;
 	}
 
-	public String getUserName() {
+	/**
+	 * Getter for user name
+	 */
+	public final String getUserName() {
 		return userName;
 	}
 }

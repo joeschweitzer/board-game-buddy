@@ -47,10 +47,17 @@ import com.boardgamebuddy.tictactoe.board.TicTacToePiece.PieceType;
 import com.boardgamebuddy.tictactoe.table.TicTacToeTable;
 import com.boardgamebuddy.tictactoe.user.TicTacToeUser;
 
-
+/**
+ * TicTacToe example
+ */
 public class TicTacToe {
 	
-	public static void main(String[] args) {
+	private static final int BOARD_SIZE = 9;
+	
+	/**
+	 * Runs a complete game of TicTacToe
+	 */
+	public final void runGame() {
 		TableManager tableManager = new BasicTableManager();
 		
 		User joe = new TicTacToeUser("Joe");
@@ -65,23 +72,21 @@ public class TicTacToe {
 		game.getTurnManager().orderPlayers(
 				game.getPlayerManager().getPlayers());
 		
-		game.getMoveManager().makeMove(getMove(game, 0));
-		game.getMoveManager().makeMove(getMove(game, 1));
-		game.getMoveManager().makeMove(getMove(game, 2));
-		game.getMoveManager().makeMove(getMove(game, 3));
-		game.getMoveManager().makeMove(getMove(game, 4));
-		game.getMoveManager().makeMove(getMove(game, 5));
-		game.getMoveManager().makeMove(getMove(game, 6));
-		game.getMoveManager().makeMove(getMove(game, 7));
-		game.getMoveManager().makeMove(getMove(game, 8));
+		for (int ctr = 0; ctr < BOARD_SIZE; ctr++) {
+			game.getMoveManager().makeMove(getMove(game, ctr));
+		}
 		
 		game.getBoardManager().getMainBoard().printBoard();
 	}
 	
-	private static Move getMove(Game game, int index) {
+	/**
+	 * Returns a move for the next player to go in the given game
+	 * by placing their piece at the given board index
+	 */
+	private Move getMove(final Game game, final int index) {
 		Player player = game.getTurnManager().getCurrentPlayer();
 		Piece piece = null;
-		if(player.getName().equals("Joe")) {
+		if (player.getName().equals("Joe")) {
 			piece = new TicTacToePiece(player, PieceType.X);
 		} else {
 			piece = new TicTacToePiece(player, PieceType.O);
@@ -91,5 +96,13 @@ public class TicTacToe {
 				String.valueOf(index));
 		
 		return new BasicMove(player, space, piece);
+	}
+	
+	/**
+	 * Main driver
+	 */
+	public static void main(final String[] args) {
+		TicTacToe ticTacToe = new TicTacToe();
+		ticTacToe.runGame();
 	}
 }

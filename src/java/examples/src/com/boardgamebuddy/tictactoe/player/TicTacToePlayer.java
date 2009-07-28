@@ -34,20 +34,36 @@ package com.boardgamebuddy.tictactoe.player;
 
 import com.boardgamebuddy.core.player.Player;
 
+/**
+ * Player implementation for TicTacToe
+ */
 public class TicTacToePlayer implements Player {
 
 	private String name;
 	
-	public TicTacToePlayer(String name) {
-		this.name = name;
+	/**
+	 * Constructor for name
+	 */
+	public TicTacToePlayer(final String nameIn) {
+		this.name = nameIn;
 	}
 
-	public String getName() {
+	/**
+	 * Returns player name
+	 */
+	public final String getName() {
 		return name;
 	}
 
+	/**
+	 * String representation of this player
+	 */
 	@Override
-	public String toString() {
-		return name == null ? "" : name;
+	public final String toString() {
+		if (name == null) {
+			return "";
+		} else {
+			return name;
+		}
 	}
 }

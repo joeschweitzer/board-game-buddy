@@ -40,28 +40,37 @@ import com.boardgamebuddy.core.round.RoundManager;
 import com.boardgamebuddy.tictactoe.event.TicTacToeEvent;
 import com.boardgamebuddy.tictactoe.event.TicTacToeEvent.TicTacToeEventType;
 
+/**
+ * Round manager implementation for TicTacToe
+ */
 public class TicTacToeRoundManager implements RoundManager, EventListener {
 
 	private Game game;
 	private EventManager eventManager;
 	private int numTurns = 0;
 	
-	public TicTacToeRoundManager(Game game) {
-		this.game = game;
+	/**
+	 * Constructor for game
+	 */
+	public TicTacToeRoundManager(final Game gameIn) {
+		this.game = gameIn;
 		this.eventManager = this.game.getEventManager();
 		
 		eventManager.registerListener(
 				TicTacToeEventType.TURN_COMPLETE.toString(), this);
 	}
 	
-	public void eventRaised(Event event) {
-		if(TicTacToeEventType.TURN_COMPLETE.equals(
+	/**
+	 * Callback when event is raised during the game
+	 */
+	public final void eventRaised(final Event event) {
+		if (TicTacToeEventType.TURN_COMPLETE.equals(
 				TicTacToeEventType.valueOf(event.getEventType()))) {
 			numTurns++;
 			System.out.println("Turn complete");
 		}
 		
-		if(numTurns % 2 == 0) {
+		if (numTurns % 2 == 0) {
 			eventManager.raiseEvent(
 					new TicTacToeEvent(TicTacToeEventType.ROUND_COMPLETE));
 			System.out.println("Round complete");
