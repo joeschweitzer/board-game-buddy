@@ -38,24 +38,35 @@ import java.util.Collection;
 import com.boardgamebuddy.core.player.Player;
 import com.boardgamebuddy.core.player.PlayerManager;
 
-
+/**
+ * Player manager implementation for TicTacToe
+ */
 public class TicTacToePlayerManager implements PlayerManager {
 
 	private Collection<Player> players;
 	
+	/**
+	 * Default constructor
+	 */
 	public TicTacToePlayerManager() {
 		players = new ArrayList<Player>();
 	}
 
-	public void addPlayer(Player player) {
-		if(players.size() >= 2) {
+	/**
+	 * Adds the given player
+	 */
+	public final void addPlayer(final Player player) {
+		if (players.size() >= 2) {
 			throw new IllegalStateException("Too many players");
 		}
 		
 		players.add(player);
 	}
 
-	public Collection<Player> getPlayers() {
+	/**
+	 * Returns all players
+	 */
+	public final Collection<Player> getPlayers() {
 		return players;
 	}
 }

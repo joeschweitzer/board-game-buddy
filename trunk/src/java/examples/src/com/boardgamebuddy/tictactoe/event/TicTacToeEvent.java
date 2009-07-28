@@ -34,19 +34,30 @@ package com.boardgamebuddy.tictactoe.event;
 
 import com.boardgamebuddy.core.event.Event;
 
+/**
+ * Event implementation for TicTacToe
+ */
 public class TicTacToeEvent implements Event {
 
+	/**
+	 * Various events for TicTacToe
+	 */
 	public enum TicTacToeEventType { MOVE_COMPLETE, TURN_COMPLETE, 
 		ROUND_COMPLETE, GAME_COMPLETE };
 	
 	private TicTacToeEventType eventType;
 	
-	public TicTacToeEvent(TicTacToeEventType eventType) {
-		this.eventType = eventType;
+	/**
+	 * Constructor for event type
+	 */
+	public TicTacToeEvent(final TicTacToeEventType eventTypeIn) {
+		this.eventType = eventTypeIn;
 	}
 	
-	public String getEventType() {
+	/**
+	 * Getter for event type
+	 */
+	public final String getEventType() {
 		return eventType.toString();
 	}
-
 }

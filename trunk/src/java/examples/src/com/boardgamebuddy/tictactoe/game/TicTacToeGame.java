@@ -58,8 +58,13 @@ import com.boardgamebuddy.tictactoe.round.TicTacToeRoundManager;
 import com.boardgamebuddy.tictactoe.score.TicTacToeScoreManager;
 import com.boardgamebuddy.tictactoe.turn.TicTacToeTurnManager;
 
+/**
+ * Implementation of Game for TicTacToe
+ */
 public class TicTacToeGame implements Game, EventListener {
 
+	private static final int BOARD_SIZE = 3;
+	
 	private EventManager eventManager = new TicTacToeEventManager();
 	private BoardManager boardManager = new TicTacToeBoardManager();
 	private MoveManager moveManager = new TicTacToeMoveManager(this);
@@ -71,34 +76,49 @@ public class TicTacToeGame implements Game, EventListener {
 	private String name;
 	private String status;
 	
-	public TicTacToeGame(String name) {
-		this.name = name;
+	/**
+	 * Constructor with game name
+	 */
+	public TicTacToeGame(final String nameIn) {
+		this.name = nameIn;
 		this.status = "WAITING FOR PLAYERS";
 		
-		Board board = new TicTacToeBoard(3);
+		Board board = new TicTacToeBoard(BOARD_SIZE);
 		boardManager.addBoard(board);
 		
 		eventManager.registerListener(
 				TicTacToeEventType.GAME_COMPLETE.toString(), this);
 	}
 	
-	public void start() {
+	/**
+	 * Start game
+	 */
+	public final void start() {
 		this.status = "RUNNING";
 	}
 	
-	public void end() {
+	/**
+	 * End game
+	 */
+	public final void end() {
 		this.status = "ENDED";
 	}
 
-	public void addPlayers(Collection<User> users) {
-		for(User user : users) {
+	/**
+	 * Add the given users as new TicTacToePlayers
+	 */
+	public final void addPlayers(final Collection<User> users) {
+		for (User user : users) {
 			Player player = new TicTacToePlayer(user.getUserName());
 			playerManager.addPlayer(player);
 		}
 	}
 
-	public void eventRaised(Event event) {
-		if(TicTacToeEventType.GAME_COMPLETE.equals(
+	/**
+	 * Callback when an event is raised in the game
+	 */
+	public final void eventRaised(final Event event) {
+		if (TicTacToeEventType.GAME_COMPLETE.equals(
 				TicTacToeEventType.valueOf(event.getEventType()))) {
 			System.out.println("Game over");
 			System.out.println("Winner = " + scoreManager.getWinner());
@@ -106,31 +126,66 @@ public class TicTacToeGame implements Game, EventListener {
 		}
 	}
 
-	public BoardManager getBoardManager() {
+	/**
+	 * Getter for boardManager
+	 */
+	public final BoardManager getBoardManager() {
 		return boardManager;
 	}
 
-	public MoveManager getMoveManager() {
+	/**
+	 * Getter for moveManager
+	 */
+	public final MoveManager getMoveManager() {
 		return moveManager;
 	}
 
-	public TurnManager getTurnManager() {
+	/**
+	 * Getter for turnManager
+	 */
+	public final TurnManager getTurnManager() {
 		return turnManager;
 	}
 
-	public RoundManager getRoundManager() {
+	/**
+	 * Getter for roundManager
+	 */
+	public final RoundManager getRoundManager() {
 		return roundManager;
 	}
 
-	public PlayerManager getPlayerManager() {
+	/**
+	 * Getter for playerManager
+	 */
+	public final PlayerManager getPlayerManager() {
 		return playerManager;
 	}
 
-	public ScoreManager getScoreManager() {
+	/**
+	 * Getter for scoreManager
+	 */
+	public final ScoreManager getScoreManager() {
 		return scoreManager;
 	}
 
-	public EventManager getEventManager() {
+	/**
+	 * Getter for eventManager
+	 */
+	public final EventManager getEventManager() {
 		return eventManager;
+	}
+
+	/**
+	 * Returns the game name
+	 */
+	public final String getName() {
+		return name;
+	}
+
+	/**
+	 * Returns the game status
+	 */
+	public final String getStatus() {
+		return status;
 	}
 }

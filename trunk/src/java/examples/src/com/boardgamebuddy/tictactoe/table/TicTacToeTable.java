@@ -40,23 +40,31 @@ import com.boardgamebuddy.core.table.Table;
 import com.boardgamebuddy.core.user.User;
 import com.boardgamebuddy.tictactoe.game.TicTacToeGame;
 
+/**
+ * Table implementation for TicTacToe
+ */
 public class TicTacToeTable implements Table {
 
 	private Collection<User> users = new ArrayList<User>();
 	private Game game;
 	
-	public void addUser(User user) {
+	/**
+	 * Adds the given user to this table
+	 */
+	public final void addUser(final User user) {
 		users.add(user);
 		
-		if(users.size() == 2) {
+		if (users.size() == 2) {
 			game = new TicTacToeGame("Game1");
 			game.addPlayers(users);
 			game.start();
 		}
 	}
 
-	public Game getGame() {
+	/**
+	 * Returns the game for this table
+	 */
+	public final Game getGame() {
 		return game;
 	}
-
 }

@@ -35,49 +35,91 @@ package com.boardgamebuddy.tictactoe.board;
 import com.boardgamebuddy.core.board.Piece;
 import com.boardgamebuddy.core.player.Player;
 
+/**
+ * TicTacToe implementation of Piece
+ */
 public class TicTacToePiece implements Piece {
 
-	public enum PieceType {X, O};
+	/**
+	 * Types of pieces in a TicTacToe game
+	 */
+	public enum PieceType { X, O };
 	
 	private Player player;
 	private PieceType type;
 	
-	public TicTacToePiece(Player player, PieceType type) {
-		this.player = player;
-		this.type = type;
+	/**
+	 * Constructor for player and piece type
+	 */
+	public TicTacToePiece(final Player playerIn, final PieceType typeIn) {
+		this.player = playerIn;
+		this.type = typeIn;
 	}
 
-	public String getValue() {
+	/**
+	 * Returns the value of this piece
+	 */
+	public final String getValue() {
 		return type.toString();
 	}
 
+	/**
+	 * Returns the string representation of this piece
+	 */
 	@Override
-	public String toString() {
-		return type == null ? "" : type.toString();
+	public final String toString() {
+		if (type == null) {
+			return "";
+		} else {
+			return type.toString();
+		}
 	}
 
+	/**
+	 * hashCode() implementation off of type
+	 */
 	@Override
-	public int hashCode() {
+	public final int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((type == null) ? 0 : type.hashCode());
+		result = prime * result;
+		
+		if (type != null) {
+			result += type.hashCode();
+		}
+		
 		return result;
 	}
 
+	/**
+	 * equals() implementation off of type
+	 */
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
+	public final boolean equals(final Object obj) {
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		TicTacToePiece other = (TicTacToePiece) obj;
 		if (type == null) {
-			if (other.type != null)
+			if (other.type != null) {
 				return false;
-		} else if (!type.equals(other.type))
+			}
+		} else if (!type.equals(other.type)) {
 			return false;
+		}
 		return true;
+	}
+
+	/**
+	 * Returns the player for this piece
+	 */
+	public final Player getPlayer() {
+		return player;
 	}
 }

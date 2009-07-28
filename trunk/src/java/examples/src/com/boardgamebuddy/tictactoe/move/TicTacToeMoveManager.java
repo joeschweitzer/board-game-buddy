@@ -40,25 +40,34 @@ import com.boardgamebuddy.core.move.MoveManager;
 import com.boardgamebuddy.core.player.Player;
 import com.boardgamebuddy.tictactoe.event.TicTacToeEvent.TicTacToeEventType;
 
+/**
+ * TicTacToe implementation of MoveManager
+ */
 public class TicTacToeMoveManager implements MoveManager {
 
 	private Game game;
 	private EventManager eventManager;
 	
-	public TicTacToeMoveManager(Game game) {
-		this.game = game;
+	/**
+	 * Constructor passing game
+	 */
+	public TicTacToeMoveManager(final Game gameIn) {
+		this.game = gameIn;
 		this.eventManager = this.game.getEventManager();
 	}
 	
-	public void makeMove(Move move) {
+	/**
+	 * Makes the given move
+	 */
+	public final void makeMove(final Move move) {
 		Player currPlayer = game.getTurnManager().getCurrentPlayer();
 		
-		if(!move.getPlayer().equals(currPlayer)) {
+		if (!move.getPlayer().equals(currPlayer)) {
 			throw new IllegalArgumentException(
 					"Invalid move - player out of turn " + move);
 		}
 		
-		if(move.getSpace().getPiece() != null ) {
+		if (move.getSpace().getPiece() != null) {
 			throw new IllegalArgumentException(
 					"Invalid move - space not empty " + move);
 		}

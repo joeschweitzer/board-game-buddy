@@ -44,40 +44,52 @@ import com.boardgamebuddy.tictactoe.board.TicTacToeBoard;
 import com.boardgamebuddy.tictactoe.event.TicTacToeEvent;
 import com.boardgamebuddy.tictactoe.event.TicTacToeEvent.TicTacToeEventType;
 
+/**
+ * Score manager implementation for TicTacToe
+ */
 public class TicTacToeScoreManager implements ScoreManager, EventListener {
 
 	private Game game;
 	private EventManager eventManager;
 	private Player winner = null;
 	
-	public TicTacToeScoreManager(Game game) {
-		this.game = game;
+	/**
+	 * Constructor for game
+	 */
+	public TicTacToeScoreManager(final Game gameIn) {
+		this.game = gameIn;
 		this.eventManager = game.getEventManager();
 		
 		eventManager.registerListener(
 				TicTacToeEventType.MOVE_COMPLETE.toString(), this);
 	}
 	
-	public void eventRaised(Event event) {
-		if(TicTacToeEventType.MOVE_COMPLETE.equals(
+	/**
+	 * Callback for when event is raised during the game
+	 */
+	public final void eventRaised(final Event event) {
+		if (TicTacToeEventType.MOVE_COMPLETE.equals(
 				TicTacToeEventType.valueOf(event.getEventType()))) {
 			MoveEvent moveEvent = (MoveEvent) event;
 			BoardManager boardManager = game.getBoardManager();
 			TicTacToeBoard board = (TicTacToeBoard) boardManager.getMainBoard();
 			
-			if(board.doesCompleteStraightLine(moveEvent.getMove().getSpace())
+			if (board.doesCompleteStraightLine(moveEvent.getMove().getSpace())
 				|| board.noEmptySpaces()) {
 				winner = moveEvent.getMove().getPlayer();
 				eventManager.raiseEvent(
 						new TicTacToeEvent(TicTacToeEventType.GAME_COMPLETE));
-			} else if(board.noEmptySpaces()) {
+			} else if (board.noEmptySpaces()) {
 				eventManager.raiseEvent(
 						new TicTacToeEvent(TicTacToeEventType.GAME_COMPLETE));
 			}
 		}
 	}
 	
-	public Player getWinner() {
+	/**
+	 * Returns the winner
+	 */
+	public final Player getWinner() {
 		return winner;
 	}
 

@@ -41,27 +41,37 @@ import com.boardgamebuddy.core.event.Event;
 import com.boardgamebuddy.core.event.EventListener;
 import com.boardgamebuddy.core.event.EventManager;
 
+/**
+ * EventManager implementation for TicTacToe
+ */
 public class TicTacToeEventManager implements EventManager {
 
-	Map<String, List<EventListener>> eventMap = 
+	private Map<String, List<EventListener>> eventMap = 
 		new HashMap<String, List<EventListener>>();
 	
-	public void raiseEvent(Event event) {
+	/**
+	 * Raise the given event
+	 */
+	public final void raiseEvent(final Event event) {
 		List<EventListener> listeners = eventMap.get(event.getEventType());
 		
-		if(listeners == null) {
+		if (listeners == null) {
 			return;
 		}
 		
-		for(EventListener listener : listeners) {
+		for (EventListener listener : listeners) {
 			listener.eventRaised(event);
 		}
 	}
 
-	public void registerListener(String eventType, EventListener listener) {
+	/**
+	 * Register the given listener for the given event type
+	 */
+	public final void registerListener(final String eventType, 
+			final EventListener listener) {
 		List<EventListener> listeners = eventMap.get(eventType);
 		
-		if(listeners == null) {
+		if (listeners == null) {
 			listeners = new ArrayList<EventListener>();
 		}
 		
@@ -69,6 +79,4 @@ public class TicTacToeEventManager implements EventManager {
 		
 		eventMap.put(eventType, listeners);
 	}
-
-	
 }

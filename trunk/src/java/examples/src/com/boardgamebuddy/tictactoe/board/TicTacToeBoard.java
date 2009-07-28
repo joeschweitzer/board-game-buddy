@@ -34,9 +34,15 @@ package com.boardgamebuddy.tictactoe.board;
 
 import com.boardgamebuddy.basic.board.SquareBoard;
 
+/**
+ * TicTacToe board
+ */
 public class TicTacToeBoard extends SquareBoard {
 
-	public TicTacToeBoard(int size) {
+	/**
+	 * Constructor for size
+	 */
+	public TicTacToeBoard(final int size) {
 		super(size);
 	}
 }
