@@ -32,6 +32,9 @@
  */
 package com.boardgamebuddy.core.round;
 
+/**
+ * Manager for rounds in a game
+ */
 public interface RoundManager {
 
 }

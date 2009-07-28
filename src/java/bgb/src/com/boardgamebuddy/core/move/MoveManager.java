@@ -32,7 +32,13 @@
  */
 package com.boardgamebuddy.core.move;
 
+/**
+ * Manager for moves in the game
+ */
 public interface MoveManager {
 
+	/**
+	 * Makes the given move
+	 */
 	void makeMove(Move move);
 }

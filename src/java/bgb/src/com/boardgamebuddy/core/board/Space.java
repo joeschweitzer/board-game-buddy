@@ -32,9 +32,23 @@
  */
 package com.boardgamebuddy.core.board;
 
+/**
+ * Interface for representing a space
+ */
 public interface Space {
 
+	/**
+	 * Returns the value for this space
+	 */
 	String getValue();
+	
+	/**
+	 * Returns the piece on this space
+	 */
 	Piece getPiece();
+	
+	/**
+	 * Sets the piece for this space
+	 */
 	void setPiece(Piece piece);
 }

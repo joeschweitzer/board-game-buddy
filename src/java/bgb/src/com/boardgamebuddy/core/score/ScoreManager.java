@@ -34,7 +34,13 @@ package com.boardgamebuddy.core.score;
 
 import com.boardgamebuddy.core.player.Player;
 
+/**
+ * Manager for keeping score in a game
+ */
 public interface ScoreManager {
 
+	/**
+	 * Returns the winner of the game
+	 */
 	Player getWinner();
 }

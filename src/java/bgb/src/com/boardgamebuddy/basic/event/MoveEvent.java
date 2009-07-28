@@ -35,23 +35,33 @@ package com.boardgamebuddy.basic.event;
 import com.boardgamebuddy.core.event.Event;
 import com.boardgamebuddy.core.move.Move;
 
+/**
+ * Implementation of an event for when a move is made
+ */
 public class MoveEvent implements Event {
 
 	private String type;
 	private Move move;
 	
-	public MoveEvent(String type, Move move) {
-		this.type = type;
-		this.move = move;
+	/**
+	 * Constructor for event type and move
+	 */
+	public MoveEvent(final String typeIn, final Move moveIn) {
+		this.type = typeIn;
+		this.move = moveIn;
 	}
 	
-	public String getEventType() {
+	/**
+	 * Returns the event type
+	 */
+	public final String getEventType() {
 		return type;
 	}
 	
-	public Move getMove() {
+	/**
+	 * Returns the move that triggered the event
+	 */
+	public final Move getMove() {
 		return move;
 	}
-
-	
 }

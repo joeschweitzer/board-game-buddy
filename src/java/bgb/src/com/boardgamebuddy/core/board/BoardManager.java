@@ -32,8 +32,18 @@
  */
 package com.boardgamebuddy.core.board;
 
+/**
+ * Manager for managing all boards in a game
+ */
 public interface BoardManager {
 
+	/**
+	 * Adds the given board
+	 */
 	void addBoard(Board board);
+	
+	/**
+	 * Returns the main/primary board
+	 */
 	Board getMainBoard();
 }

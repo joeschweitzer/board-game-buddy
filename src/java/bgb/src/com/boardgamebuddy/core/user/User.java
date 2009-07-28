@@ -32,7 +32,13 @@
  */
 package com.boardgamebuddy.core.user;
 
+/**
+ * Interface for representing a user]
+ */
 public interface User {
 
+	/**
+	 * Returns the user name of the user
+	 */
 	String getUserName();
 }

@@ -32,8 +32,18 @@
  */
 package com.boardgamebuddy.core.board;
 
+/**
+ * Interface for representing a game board
+ */
 public interface Board {
 
+	/**
+	 * Returns the space with the given value
+	 */
 	Space getSpace(String value);
+	
+	/**
+	 * Prints the board in its current state
+	 */
 	void printBoard();
 }

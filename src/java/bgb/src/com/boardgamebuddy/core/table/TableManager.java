@@ -32,9 +32,18 @@
  */
 package com.boardgamebuddy.core.table;
 
+/**
+ * Manager for game tables
+ */
 public interface TableManager {
 
+	/**
+	 * Valid table types
+	 */
 	public enum TableType { TICTACTOE };
 	
+	/**
+	 * Adds the given table
+	 */
 	void addNewTable(Table table);
 }

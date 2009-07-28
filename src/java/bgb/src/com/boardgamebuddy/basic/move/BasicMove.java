@@ -37,28 +37,43 @@ import com.boardgamebuddy.core.board.Space;
 import com.boardgamebuddy.core.move.Move;
 import com.boardgamebuddy.core.player.Player;
 
+/**
+ * Basic move implementation for a single player, space, and piece
+ */
 public class BasicMove implements Move {
 
 	private Player player;
 	private Space space;
 	private Piece piece;
 
-	public BasicMove(Player player, Space space, Piece piece) {
-		this.player = player;
-		this.space = space;
-		this.piece = piece;
+	/**
+	 * Constructor for player moving/placing piece to space
+	 */
+	public BasicMove(final Player playerIn, final Space spaceIn, 
+			final Piece pieceIn) {
+		this.player = playerIn;
+		this.space = spaceIn;
+		this.piece = pieceIn;
 	}
 	
-	public Piece getPiece() {
+	/**
+	 * Retrieves the piece for this move
+	 */
+	public final Piece getPiece() {
 		return piece;
 	}
 
-	public Player getPlayer() {
+	/**
+	 * Retrieves the player for this move
+	 */
+	public final Player getPlayer() {
 		return player;
 	}
 
-	public Space getSpace() {
+	/**
+	 * Retrieves the space for this move
+	 */
+	public final Space getSpace() {
 		return space;
 	}
-
 }

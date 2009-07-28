@@ -32,7 +32,13 @@
  */
 package com.boardgamebuddy.core.event;
 
+/**
+ * Interface for an event listener
+ */
 public interface EventListener {
 
+	/**
+	 * Called when the given event is raised
+	 */
 	void eventRaised(Event event);
 }

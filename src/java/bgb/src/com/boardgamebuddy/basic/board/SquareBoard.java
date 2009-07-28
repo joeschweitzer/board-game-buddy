@@ -38,124 +38,192 @@ import java.util.List;
 import com.boardgamebuddy.core.board.Board;
 import com.boardgamebuddy.core.board.Space;
 
-
+/**
+ * Board implementation for a square board
+ */
 public class SquareBoard implements Board {
 
 	private int size;
 	private List<Space> spaces;
 	
-	public SquareBoard(int size) {
-		this.size = size;
+	/**
+	 * Constructor with size parameter (same size for width and height)
+	 * 
+	 * @param sizeIn Number of spaces for width (or height)
+	 */
+	public SquareBoard(final int sizeIn) {
+		this.size = sizeIn;
 		spaces = new ArrayList<Space>();
 		
-		init();
-	}
-	
-	public void init() {
-		for(int index = 0; index < (size * size); index++) {
+		for (int index = 0; index < (size * size); index++) {
 			spaces.add(new BasicSpace(String.valueOf(index)));
 		}
 	}
 
-	public Space getSpace(String value) {
+	/**
+	 * Retrieves the space on the board with the given value
+	 */
+	public final Space getSpace(final String value) {
 		int index = Integer.parseInt(value);
 		
-		if(index >= 0 && index < spaces.size()) {
+		if (index >= 0 && index < spaces.size()) {
 			return spaces.get(index);
 		} else {
 			throw new IllegalArgumentException("Invalid space value " + value);
 		}
 	}
 	
-	public Space getAdjacentNorth(Space space) {
+	/**
+	 * Returns the space which is directly north of the given space or null
+	 * if the given space is at the top of the board
+	 */
+	public final Space getAdjacentNorth(final Space space) {
 		int index = Integer.parseInt(space.getValue());
 		
 		int north = index - size;
 		
-		return north < 0 ? null : spaces.get(north);
+		if (north < 0) {
+			return null;
+		} else {
+			return spaces.get(north);
+		}
 	}
 
-	public Space getAdjacentNorthEast(Space space) {
+	/**
+	 * Returns the space which is directly northeast of the given space or null
+	 * if the given space is at the top or right side of the board
+	 */
+	public final Space getAdjacentNorthEast(final Space space) {
 		Space northEast = null;
 		Space north = getAdjacentNorth(space);
 		
-		if(north != null) {
+		if (north != null) {
 			northEast = getAdjacentEast(north);
 		}
 		
 		return northEast;
 	}
 	
-	public Space getAdjacentEast(Space space) {
+	/**
+	 * Returns the space which is directly east of the given space or null
+	 * if the given space is at the right side of the board
+	 */
+	public final Space getAdjacentEast(final Space space) {
 		int index = Integer.parseInt(space.getValue());
 		
 		int east = index + 1;
 		
-		return east % size == 0 ? null : spaces.get(east);
+		if (east % size == 0) {
+			return null;
+		} else {
+			return spaces.get(east);
+		}
 	}
 	
-	public Space getAdjacentSouthEast(Space space) {
+	/**
+	 * Returns the space which is directly southeast of the given space or null
+	 * if the given space is at the bottom or right side of the board
+	 */
+	public final Space getAdjacentSouthEast(final Space space) {
 		Space southEast = null;
 		Space south = getAdjacentSouth(space);
 		
-		if(south != null) {
+		if (south != null) {
 			southEast = getAdjacentEast(south);
 		}
 		
 		return southEast;
 	}
 	
-	public Space getAdjacentSouth(Space space) {
+	/**
+	 * Returns the space which is directly south of the given space or null
+	 * if the given space is at the bottom of the board
+	 */
+	public final Space getAdjacentSouth(final Space space) {
 		int index = Integer.parseInt(space.getValue());
 		
 		int south = index + size;
 		
-		return south > ((spaces.size()) - 1) ? null : spaces.get(south);
+		if (south > ((spaces.size())) - 1) {
+			return null;
+		} else {
+			return spaces.get(south);
+		}
 	}
 
-	public Space getAdjacentSouthWest(Space space) {
+	/**
+	 * Returns the space which is directly southwest of the given space or null
+	 * if the given space is at the bottom or left side of the board
+	 */
+	public final Space getAdjacentSouthWest(final Space space) {
 		Space southWest = null;
 		Space south = getAdjacentSouth(space);
 		
-		if(south != null) {
+		if (south != null) {
 			southWest = getAdjacentWest(south);
 		}
 		
 		return southWest;
 	}
 
-	public Space getAdjacentWest(Space space) {
+	/**
+	 * Returns the space which is directly west of the given space or null
+	 * if the given space is at the left side of the board
+	 */
+	public final Space getAdjacentWest(final Space space) {
 		int index = Integer.parseInt(space.getValue());
 		
 		int west = index - 1;
 		
-		return index % size == 0 ? null : spaces.get(west);
+		if (index % size == 0) {
+			return null;
+		} else {
+			return spaces.get(west);
+		}
 	}
 
-	public Space getAdjacentNorthWest(Space space) {
+	/**
+	 * Returns the space which is directly northwest of the given space or null
+	 * if the given space is at the top or left side of the board
+	 */
+	public final Space getAdjacentNorthWest(final Space space) {
 		Space northWest = null;
 		Space north = getAdjacentNorth(space);
 		
-		if(north != null) {
+		if (north != null) {
 			northWest = getAdjacentWest(north);
 		}
 		
 		return northWest;
 	}
 	
-	public boolean doesCompleteStraightLine(Space space) {
-		return doesCompleteVerticalLine(space) || 
-			doesCompleteHorizontalLine(space) || 
-			doesCompleteUpDiagonalLine(space) ||
-			doesCompleteDownDiagonalLine(space);
+	/**
+	 * Returns true if this space completes a straight vertical, 
+	 * horizontal, or diagonal line across the whole board - to complete
+	 * the line the piece that is on the given space must be the same
+	 * piece as the other spaces that are in the same column, row, or
+	 * diagonal, etc. as this space.
+	 */
+	public final boolean doesCompleteStraightLine(final Space space) {
+		return doesCompleteVerticalLine(space) 
+			|| doesCompleteHorizontalLine(space) 
+			|| doesCompleteUpDiagonalLine(space) 
+			|| doesCompleteDownDiagonalLine(space);
 	}
 	
-	public boolean doesCompleteLine(Space space, String direction) {
+	/**
+	 * Determines if the given space completes a line in the given 
+	 * direction.  To complete a line, the piece that is on the given
+	 * space must be the same piece as the other spaces in the given
+	 * direction.
+	 */
+	public final boolean doesCompleteLine(final Space space, 
+			final String direction) {
 		Space currSpace = space;
 		
-		while(currSpace != null) {
-			if(currSpace.getPiece() == null ||
-					!currSpace.getPiece().equals(space.getPiece())) {
+		while (currSpace != null) {
+			if (currSpace.getPiece() == null 
+					|| !currSpace.getPiece().equals(space.getPiece())) {
 				return false;
 			}
 			currSpace = getAdjacentSpace(currSpace, direction);
@@ -164,26 +232,31 @@ public class SquareBoard implements Board {
 		return true;
 	}
 	
-	public Space getAdjacentSpace(Space space, String direction) {
-		if(space == null) {
+	/**
+	 * Returns the space that is adjacent to the given space in the
+	 * given direction or null if no such space exists
+	 */
+	public final Space getAdjacentSpace(
+			final Space space, final String direction) {
+		if (space == null) {
 			return null;
 		}
 		
-		if("NORTH".equals(direction)) {
+		if ("NORTH".equals(direction)) {
 			return getAdjacentNorth(space);
-		} else if("SOUTH".equals(direction)) {
+		} else if ("SOUTH".equals(direction)) {
 			return getAdjacentSouth(space);
-		} else if("EAST".equals(direction)) {
+		} else if ("EAST".equals(direction)) {
 			return getAdjacentEast(space);
-		} else if("WEST".equals(direction)) {
+		} else if ("WEST".equals(direction)) {
 			return getAdjacentWest(space);
-		} else if("NORTHWEST".equals(direction)) {
+		} else if ("NORTHWEST".equals(direction)) {
 			return getAdjacentNorthWest(space);
-		} else if("NORTHEAST".equals(direction)) {
+		} else if ("NORTHEAST".equals(direction)) {
 			return getAdjacentNorthEast(space);
-		} else if("SOUTHWEST".equals(direction)) {
+		} else if ("SOUTHWEST".equals(direction)) {
 			return getAdjacentSouthWest(space);
-		} else if("SOUTHEAST".equals(direction)) {
+		} else if ("SOUTHEAST".equals(direction)) {
 			return getAdjacentSouthEast(space);
 		} else {
 			throw new IllegalArgumentException(
@@ -191,7 +264,12 @@ public class SquareBoard implements Board {
 		}
 	}
 	
-	public int countAdjacentSpaces(Space space, String direction) {
+	/**
+	 * Counts the number of adjacent spaces to the given space in the
+	 * given direction
+	 */
+	public final int countAdjacentSpaces(final Space space, 
+			final String direction) {
 		Space currSpace = getAdjacentSpace(space, direction);
 		int adjacentSpaces = 0;
 		
@@ -203,41 +281,64 @@ public class SquareBoard implements Board {
 		return adjacentSpaces;
 	}
 	
-	public boolean doesCompleteVerticalLine(Space space) {
-		return doesCompleteLine(space, "NORTH") &&
-			doesCompleteLine(space, "SOUTH");
+	/**
+	 * Returns true if the given space completes a vertical line
+	 */
+	public final boolean doesCompleteVerticalLine(final Space space) {
+		return doesCompleteLine(space, "NORTH") 
+			&& doesCompleteLine(space, "SOUTH");
 	}
 
-	public boolean doesCompleteHorizontalLine(Space space) {
-		return doesCompleteLine(space, "WEST") &&
-			doesCompleteLine(space, "EAST");
+	/**
+	 * Returns true if the given space completes a horizontal line
+	 */
+	public final boolean doesCompleteHorizontalLine(final Space space) {
+		return doesCompleteLine(space, "WEST") 
+			&& doesCompleteLine(space, "EAST");
 	}
 
-	public boolean doesCompleteUpDiagonalLine(Space space) {
-		return isOnUpDiagonal(space) &&
-			doesCompleteLine(space, "SOUTHWEST") &&
-			doesCompleteLine(space, "NORTHEAST");
+	/**
+	 * Returns true if the given space completes an "up" diagonal
+	 * (southwest to northeast)
+	 */
+	public final boolean doesCompleteUpDiagonalLine(final Space space) {
+		return isOnUpDiagonal(space) 
+			&& doesCompleteLine(space, "SOUTHWEST") 
+			&& doesCompleteLine(space, "NORTHEAST");
 	}
 	
-	public boolean doesCompleteDownDiagonalLine(Space space) {
-		return isOnDownDiagonal(space) &&
-			doesCompleteLine(space, "NORTHWEST") &&
-			doesCompleteLine(space, "SOUTHEAST");
+	/**
+	 * Returns true if the given space completes a "down" diagonal
+	 * (northwest to southeast)
+	 */
+	public final boolean doesCompleteDownDiagonalLine(final Space space) {
+		return isOnDownDiagonal(space) 
+			&& doesCompleteLine(space, "NORTHWEST") 
+			&& doesCompleteLine(space, "SOUTHEAST");
 	}
 	
-	public boolean isOnUpDiagonal(Space space) {
-		return (countAdjacentSpaces(space, "SOUTHWEST") + 
-			countAdjacentSpaces(space, "NORTHEAST")) == size;
+	/**
+	 * Returns true if this space is on an "up" diagonal
+	 */
+	public final boolean isOnUpDiagonal(final Space space) {
+		return (countAdjacentSpaces(space, "SOUTHWEST") 
+				+ countAdjacentSpaces(space, "NORTHEAST")) == size;
 	}
 	
-	public boolean isOnDownDiagonal(Space space) {
-		return (countAdjacentSpaces(space, "NORTHWEST") + 
-			countAdjacentSpaces(space, "SOUTHEAST")) == size;
+	/**
+	 * Returns true if this space is on a "down" diagonal
+	 */
+	public final boolean isOnDownDiagonal(final Space space) {
+		return (countAdjacentSpaces(space, "NORTHWEST") 
+				+ countAdjacentSpaces(space, "SOUTHEAST")) == size;
 	}
 	
-	public boolean noEmptySpaces() {
-		for(Space space : spaces) {
-			if(space.getPiece() == null) {
+	/**
+	 * Returns true if there are no more empty spaces on the board
+	 */
+	public final boolean noEmptySpaces() {
+		for (Space space : spaces) {
+			if (space.getPiece() == null) {
 				return false;
 			}
 		}
@@ -245,15 +346,21 @@ public class SquareBoard implements Board {
 		return true;
 	}
 
-	public void printBoard() {
+	/**
+	 * Prints the board in its current state
+	 */
+	public final void printBoard() {
 		String allSpaces = "";
 		
-		for(Space space : spaces) {
+		for (Space space : spaces) {
 			int index = Integer.valueOf(space.getValue());
-			String value = space.getPiece() == null ? "" :
-				space.getPiece().getValue();
+			String value = "";
 			
-			if(index % size == 0) {
+			if (space.getPiece() != null) {
+				space.getPiece().getValue();
+			}
+			
+			if (index % size == 0) {
 				allSpaces += "\n";
 			}
 			allSpaces += value + " ";

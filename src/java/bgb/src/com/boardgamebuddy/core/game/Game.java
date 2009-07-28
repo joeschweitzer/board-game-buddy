@@ -43,17 +43,53 @@ import com.boardgamebuddy.core.score.ScoreManager;
 import com.boardgamebuddy.core.turn.TurnManager;
 import com.boardgamebuddy.core.user.User;
 
+/**
+ * Interface for representing a game
+ */
 public interface Game {
 
+	/**
+	 * Adds the given users as players
+	 */
 	void addPlayers(Collection<User> users);
+	
+	/**
+	 * Starts the game
+	 */
 	void start();
 	
+	/**
+	 * Gets the board manager for this game
+	 */
 	BoardManager getBoardManager();
-	EventManager getEventManager();
-	MoveManager getMoveManager();
-	PlayerManager getPlayerManager();
-	RoundManager getRoundManager();
-	ScoreManager getScoreManager();
-	TurnManager getTurnManager();
 	
+	/**
+	 * Gets the event manager for this game
+	 */
+	EventManager getEventManager();
+	
+	/**
+	 * Gets the move manager for this game
+	 */
+	MoveManager getMoveManager();
+	
+	/**
+	 * Gets the player manager for this game
+	 */
+	PlayerManager getPlayerManager();
+	
+	/**
+	 * Gets the round manager for this game
+	 */
+	RoundManager getRoundManager();
+	
+	/**
+	 * Gets the score manager for this game
+	 */
+	ScoreManager getScoreManager();
+	
+	/**
+	 * Gets the turn manager for this game
+	 */
+	TurnManager getTurnManager();
 }

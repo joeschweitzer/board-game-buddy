@@ -35,41 +35,68 @@ package com.boardgamebuddy.basic.board;
 import com.boardgamebuddy.core.board.Piece;
 import com.boardgamebuddy.core.board.Space;
 
+/**
+ * Basic implementation for a space with a simple string value
+ */
 public class BasicSpace implements Space {
 
 	private String value;
 	private Piece piece;
 	
-	public BasicSpace(String value) {
-		this.value = value;
+	/**
+	 * Constructor for value
+	 */
+	public BasicSpace(final String valueIn) {
+		this.value = valueIn;
 	}
-
 	
-	public String getValue() {
+	/**
+	 * Getter for value
+	 */
+	public final String getValue() {
 		return value;
 	}
 
-	public void setValue(String value) {
-		this.value = value;
+	/**
+	 * Setter for value
+	 */
+	public final void setValue(final String valueIn) {
+		this.value = valueIn;
 	}
 
-	public Piece getPiece() {
+	/**
+	 * Getter for piece
+	 */
+	public final Piece getPiece() {
 		return piece;
 	}
 
-	public void setPiece(Piece piece) {
-		this.piece = piece;
+	/**
+	 * Setter for piece
+	 */
+	public final void setPiece(final Piece pieceIn) {
+		this.piece = pieceIn;
 	}
 
-
-	@Override
-	public boolean equals(Object obj) {
+	/**
+	 * Implementation for equals()
+	 */
+	@Override 
+	public final boolean equals(final Object obj) {
 		BasicSpace space = (BasicSpace) obj;
 		
-		if(space.getValue().equals(value)) {
+		if (space.getValue().equals(value)) {
 			return true;
 		}
 		
 		return false;
+	}
+
+	/**
+	 * Implementation for hashCode()
+	 */
+	@Override
+	public final int hashCode() {
+		return value.hashCode();
 	}
 }

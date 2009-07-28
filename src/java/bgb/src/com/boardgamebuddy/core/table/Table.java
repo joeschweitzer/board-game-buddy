@@ -35,8 +35,18 @@ package com.boardgamebuddy.core.table;
 import com.boardgamebuddy.core.game.Game;
 import com.boardgamebuddy.core.user.User;
 
+/**
+ * Interface for representing a table
+ */
 public interface Table {
 
+	/**
+	 * Adds the given user to the table
+	 */
 	void addUser(User user);
+	
+	/**
+	 * Returns the game associated with this table
+	 */
 	Game getGame();
 }
