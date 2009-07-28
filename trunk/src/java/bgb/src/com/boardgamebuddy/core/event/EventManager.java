@@ -32,9 +32,18 @@
  */
 package com.boardgamebuddy.core.event;
 
+/**
+ * Manager for events
+ */
 public interface EventManager {
 
-	void registerListener(String eventType, EventListener listener);
+	/**
+	 * Registers the given listener for the given event type
+	 */
+	void registerListener(final String eventType, final EventListener listener);
 	
+	/**
+	 * Raises the given event
+	 */
 	void raiseEvent(Event event);
 }

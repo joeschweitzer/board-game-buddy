@@ -34,8 +34,18 @@ package com.boardgamebuddy.core.player;
 
 import java.util.Collection;
 
+/**
+ * Interface for managing players in a game
+ */
 public interface PlayerManager {
 
+	/**
+	 * Adds the given player
+	 */
 	void addPlayer(Player player);
+	
+	/**
+	 * Get all players in the game
+	 */
 	Collection<Player> getPlayers();
 }

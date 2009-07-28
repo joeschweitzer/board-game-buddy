@@ -32,7 +32,13 @@
  */
 package com.boardgamebuddy.core.board;
 
+/**
+ * Interface for representing a piece
+ */
 public interface Piece {
 
+	/**
+	 * Returns the value of this piece
+	 */
 	String getValue();
 }

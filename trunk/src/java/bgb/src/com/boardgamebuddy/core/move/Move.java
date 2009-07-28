@@ -36,9 +36,23 @@ import com.boardgamebuddy.core.board.Piece;
 import com.boardgamebuddy.core.board.Space;
 import com.boardgamebuddy.core.player.Player;
 
+/**
+ * Interface for representing a move
+ */
 public interface Move {
 
+	/**
+	 * Returns the player that made the move
+	 */
 	Player getPlayer();
+	
+	/**
+	 * Returns the space that the piece was moved to/placed on
+	 */
 	Space getSpace();
+	
+	/**
+	 * Returns the piece that was moved
+	 */
 	Piece getPiece();
 }

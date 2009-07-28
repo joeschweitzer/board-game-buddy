@@ -36,8 +36,19 @@ import java.util.Collection;
 
 import com.boardgamebuddy.core.player.Player;
 
+/**
+ * Manager for game turns
+ */
 public interface TurnManager {
 
+	/**
+	 * Returns the current turn's player
+	 */
 	Player getCurrentPlayer();
+	
+	/**
+	 * Orders the given players for who will go first, second, etc. in
+	 * the game
+	 */
 	void orderPlayers(Collection<Player> players);
 }

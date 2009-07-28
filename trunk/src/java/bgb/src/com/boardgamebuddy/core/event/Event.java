@@ -32,7 +32,13 @@
  */
 package com.boardgamebuddy.core.event;
 
+/**
+ * Interface for representing an event
+ */
 public interface Event {
 
+	/**
+	 * Returns the type of event
+	 */
 	String getEventType();
 }
