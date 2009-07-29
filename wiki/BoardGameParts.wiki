@@ -32,6 +32,10 @@ A series of turns that usually involve a chance for each player to have a turn i
 
 Constraints on the game in order to give the game structure so it is well defined and understood.  Games usually have many rules.  Although rules often do not change over the course of the game, rules can range from the very general to the very specific and affect all parts of the game.  Rules also dictate when the game is over and who has won the game.
 
+= Event =
+
+Indication that "something has happened" - usually an event is fired and then there are event listeners that listen for certain events and take action when they occur.  For instance, after a move is made it is the next player's turn so the turn manager may want to listen for move events.
+
 = Game = 
 
 An all-encompassing entity that tracks the board game at the highest level.  To break down the game into more manageable parts, it is divided into various managers that manage different aspects of the game.  These managers are listed just at a generic level - they may in turn delegate to specific implementations or other submanagers in order to do the actual work.
@@ -62,6 +66,32 @@ Manager for all round related aspects of the game.  Keeps track of all of the ro
 
 Manager for all score related aspects of the game.  Keeps track of all of the scores for the players.
 
+= Event Manager =
+
+Manager that other managers raise events to.  Allows event listeners to register for certain events and then notifies those listeners when the events occur.
+
+= User Interface Manager =
+
+Manager that interacts with user.  Interaction may be over a variety of connections/protocols.  Accepts commands from the user and also sends back status and events.  Prompts the user for input when needed.
+
+= Log Manager =
+
+Manager to log events/messages over the course of the game.
+
+= Persistence Manager =
+
+Manager to allow the state of a game to be persisted in some form - either for storage/later retrieval or to be sent to the user for display.
+
 = Game Manager =
 
 Manager for all general game related aspects of the game.  Knows the general state of the game including whether the game is over or not (if someone has won or lost).
+
+----
+
+= Table/Table Manager =
+
+Used to manage users before they enter a game.  The table owner may also be able to set game preferences before the game starts.
+
+= User/User Manager =
+
+Used to manage a user account with a particular gaming service.  Provides some authentication/authorization for users to login and then play/view certain games.
