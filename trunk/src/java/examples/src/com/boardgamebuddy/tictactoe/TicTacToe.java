@@ -34,6 +34,7 @@ package com.boardgamebuddy.tictactoe;
 
 import com.boardgamebuddy.basic.move.BasicMove;
 import com.boardgamebuddy.basic.table.BasicTableManager;
+import com.boardgamebuddy.basic.user.BasicUser;
 import com.boardgamebuddy.core.board.Piece;
 import com.boardgamebuddy.core.board.Space;
 import com.boardgamebuddy.core.game.Game;
@@ -45,7 +46,6 @@ import com.boardgamebuddy.core.user.User;
 import com.boardgamebuddy.tictactoe.board.TicTacToePiece;
 import com.boardgamebuddy.tictactoe.board.TicTacToePiece.PieceType;
 import com.boardgamebuddy.tictactoe.table.TicTacToeTable;
-import com.boardgamebuddy.tictactoe.user.TicTacToeUser;
 
 /**
  * TicTacToe example
@@ -60,8 +60,8 @@ public class TicTacToe {
 	public final void runGame() {
 		TableManager tableManager = new BasicTableManager();
 		
-		User joe = new TicTacToeUser("Joe");
-		User laura = new TicTacToeUser("Laura");
+		User joe = new BasicUser("Joe");
+		User laura = new BasicUser("Laura");
 		
 		Table table = new TicTacToeTable();
 		tableManager.addNewTable(table);

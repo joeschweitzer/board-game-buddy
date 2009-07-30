@@ -33,6 +33,8 @@
 package com.boardgamebuddy.tictactoe.score;
 
 import com.boardgamebuddy.basic.event.MoveEvent;
+import com.boardgamebuddy.basic.event.BasicEvent;
+import com.boardgamebuddy.basic.event.BasicEvent.BasicEventType;
 import com.boardgamebuddy.core.board.BoardManager;
 import com.boardgamebuddy.core.event.Event;
 import com.boardgamebuddy.core.event.EventListener;
@@ -41,8 +43,6 @@ import com.boardgamebuddy.core.game.Game;
 import com.boardgamebuddy.core.player.Player;
 import com.boardgamebuddy.core.score.ScoreManager;
 import com.boardgamebuddy.tictactoe.board.TicTacToeBoard;
-import com.boardgamebuddy.tictactoe.event.TicTacToeEvent;
-import com.boardgamebuddy.tictactoe.event.TicTacToeEvent.TicTacToeEventType;
 
 /**
  * Score manager implementation for TicTacToe
@@ -61,15 +61,15 @@ public class TicTacToeScoreManager implements ScoreManager, EventListener {
 		this.eventManager = game.getEventManager();
 		
 		eventManager.registerListener(
-				TicTacToeEventType.MOVE_COMPLETE.toString(), this);
+				BasicEventType.MOVE_COMPLETE.toString(), this);
 	}
 	
 	/**
 	 * Callback for when event is raised during the game
 	 */
 	public final void eventRaised(final Event event) {
-		if (TicTacToeEventType.MOVE_COMPLETE.equals(
-				TicTacToeEventType.valueOf(event.getEventType()))) {
+		if (BasicEventType.MOVE_COMPLETE.equals(
+				BasicEventType.valueOf(event.getEventType()))) {
 			MoveEvent moveEvent = (MoveEvent) event;
 			BoardManager boardManager = game.getBoardManager();
 			TicTacToeBoard board = (TicTacToeBoard) boardManager.getMainBoard();
@@ -78,10 +78,10 @@ public class TicTacToeScoreManager implements ScoreManager, EventListener {
 				|| board.noEmptySpaces()) {
 				winner = moveEvent.getMove().getPlayer();
 				eventManager.raiseEvent(
-						new TicTacToeEvent(TicTacToeEventType.GAME_COMPLETE));
+						new BasicEvent(BasicEventType.GAME_COMPLETE));
 			} else if (board.noEmptySpaces()) {
 				eventManager.raiseEvent(
-						new TicTacToeEvent(TicTacToeEventType.GAME_COMPLETE));
+						new BasicEvent(BasicEventType.GAME_COMPLETE));
 			}
 		}
 	}
