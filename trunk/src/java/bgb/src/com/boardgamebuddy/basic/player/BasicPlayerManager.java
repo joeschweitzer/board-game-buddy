@@ -30,46 +30,43 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.boardgamebuddy.basic.event;
+package com.boardgamebuddy.basic.player;
 
-import com.boardgamebuddy.core.event.Event;
-import com.boardgamebuddy.core.move.Move;
+import java.util.ArrayList;
+import java.util.Collection;
+
+import com.boardgamebuddy.core.player.Player;
+import com.boardgamebuddy.core.player.PlayerManager;
 
 /**
- * Implementation of an event for when a move is made
+ * Player manager implementation for TicTacToe
  */
-public class MoveEvent implements Event {
+public class BasicPlayerManager implements PlayerManager {
 
-	private String type;
-	private Move move;
+	private Collection<Player> players;
 	
 	/**
-	 * Constructor for event type and move
+	 * Default constructor
 	 */
-	public MoveEvent(final String typeIn, final Move moveIn) {
-		this.type = typeIn;
-		this.move = moveIn;
-	}
-	
-	/**
-	 * Returns the event type
-	 */
-	public final String getEventType() {
-		return type;
-	}
-	
-	/**
-	 * Returns the move that triggered the event
-	 */
-	public final Move getMove() {
-		return move;
+	public BasicPlayerManager() {
+		players = new ArrayList<Player>();
 	}
 
 	/**
-	 * String representation
+	 * Adds the given player
 	 */
-	@Override
-	public final String toString() {
-		return "" + type + " " + move;
+	public final void addPlayer(final Player player) {
+		if (players.size() >= 2) {
+			throw new IllegalStateException("Too many players");
+		}
+		
+		players.add(player);
+	}
+
+	/**
+	 * Returns all players
+	 */
+	public final Collection<Player> getPlayers() {
+		return players;
 	}
 }

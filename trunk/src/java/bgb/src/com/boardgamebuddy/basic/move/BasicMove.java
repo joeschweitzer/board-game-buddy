@@ -76,4 +76,12 @@ public class BasicMove implements Move {
 	public final Space getSpace() {
 		return space;
 	}
+
+	/**
+	 * String representation
+	 */
+	@Override
+	public final String toString() {
+		return "" + player + " " + piece + " " + space;
+	}
 }

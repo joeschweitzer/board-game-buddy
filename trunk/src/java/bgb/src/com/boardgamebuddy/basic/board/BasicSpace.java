@@ -99,4 +99,12 @@ public class BasicSpace implements Space {
 	public final int hashCode() {
 		return value.hashCode();
 	}
+
+	/**
+	 * String representation
+	 */
+	@Override
+	public final String toString() {
+		return "" + value;
+	}
 }

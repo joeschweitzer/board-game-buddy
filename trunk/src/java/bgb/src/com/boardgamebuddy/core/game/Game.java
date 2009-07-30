@@ -36,6 +36,7 @@ import java.util.Collection;
 
 import com.boardgamebuddy.core.board.BoardManager;
 import com.boardgamebuddy.core.event.EventManager;
+import com.boardgamebuddy.core.log.LogManager;
 import com.boardgamebuddy.core.move.MoveManager;
 import com.boardgamebuddy.core.player.PlayerManager;
 import com.boardgamebuddy.core.round.RoundManager;
@@ -92,4 +93,9 @@ public interface Game {
 	 * Gets the turn manager for this game
 	 */
 	TurnManager getTurnManager();
+	
+	/**
+	 * Gets the log manager for this game
+	 */
+	LogManager getLogManager();
 }

@@ -30,46 +30,22 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.boardgamebuddy.basic.event;
+package com.boardgamebuddy.core.log;
 
 import com.boardgamebuddy.core.event.Event;
-import com.boardgamebuddy.core.move.Move;
 
 /**
- * Implementation of an event for when a move is made
+ * Manager for logging events and messages
  */
-public class MoveEvent implements Event {
-
-	private String type;
-	private Move move;
-	
-	/**
-	 * Constructor for event type and move
-	 */
-	public MoveEvent(final String typeIn, final Move moveIn) {
-		this.type = typeIn;
-		this.move = moveIn;
-	}
-	
-	/**
-	 * Returns the event type
-	 */
-	public final String getEventType() {
-		return type;
-	}
-	
-	/**
-	 * Returns the move that triggered the event
-	 */
-	public final Move getMove() {
-		return move;
-	}
+public interface LogManager {
 
 	/**
-	 * String representation
+	 * Logs the given event
 	 */
-	@Override
-	public final String toString() {
-		return "" + type + " " + move;
-	}
+	void logEvent(Event event);
+	
+	/**
+	 * Logs the given message
+	 */
+	void logMessage(String message);
 }

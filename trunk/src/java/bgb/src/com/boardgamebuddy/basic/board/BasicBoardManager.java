@@ -30,46 +30,29 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.boardgamebuddy.basic.event;
+package com.boardgamebuddy.basic.board;
 
-import com.boardgamebuddy.core.event.Event;
-import com.boardgamebuddy.core.move.Move;
+import com.boardgamebuddy.core.board.Board;
+import com.boardgamebuddy.core.board.BoardManager;
 
 /**
- * Implementation of an event for when a move is made
+ * Implementation of board manager for TicTacToe
  */
-public class MoveEvent implements Event {
+public class BasicBoardManager implements BoardManager {
 
-	private String type;
-	private Move move;
+	private Board board;
 	
 	/**
-	 * Constructor for event type and move
+	 * Adds the given board
 	 */
-	public MoveEvent(final String typeIn, final Move moveIn) {
-		this.type = typeIn;
-		this.move = moveIn;
-	}
-	
-	/**
-	 * Returns the event type
-	 */
-	public final String getEventType() {
-		return type;
-	}
-	
-	/**
-	 * Returns the move that triggered the event
-	 */
-	public final Move getMove() {
-		return move;
+	public final void addBoard(final Board boardIn) {
+		this.board = boardIn;
 	}
 
 	/**
-	 * String representation
+	 * Retrieves the main board 
 	 */
-	@Override
-	public final String toString() {
-		return "" + type + " " + move;
+	public final Board getMainBoard() {
+		return board;
 	}
 }

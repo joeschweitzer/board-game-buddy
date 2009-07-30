@@ -32,44 +32,51 @@
  */
 package com.boardgamebuddy.basic.event;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import com.boardgamebuddy.core.event.Event;
-import com.boardgamebuddy.core.move.Move;
+import com.boardgamebuddy.core.event.EventListener;
+import com.boardgamebuddy.core.event.EventManager;
 
 /**
- * Implementation of an event for when a move is made
+ * EventManager implementation for TicTacToe
  */
-public class MoveEvent implements Event {
+public class BasicEventManager implements EventManager {
 
-	private String type;
-	private Move move;
+	private Map<String, List<EventListener>> eventMap = 
+		new HashMap<String, List<EventListener>>();
 	
 	/**
-	 * Constructor for event type and move
+	 * Raise the given event
 	 */
-	public MoveEvent(final String typeIn, final Move moveIn) {
-		this.type = typeIn;
-		this.move = moveIn;
-	}
-	
-	/**
-	 * Returns the event type
-	 */
-	public final String getEventType() {
-		return type;
-	}
-	
-	/**
-	 * Returns the move that triggered the event
-	 */
-	public final Move getMove() {
-		return move;
+	public final void raiseEvent(final Event event) {
+		List<EventListener> listeners = eventMap.get(event.getEventType());
+		
+		if (listeners == null) {
+			return;
+		}
+		
+		for (EventListener listener : listeners) {
+			listener.eventRaised(event);
+		}
 	}
 
 	/**
-	 * String representation
+	 * Register the given listener for the given event type
 	 */
-	@Override
-	public final String toString() {
-		return "" + type + " " + move;
+	public final void registerListener(final String eventType, 
+			final EventListener listener) {
+		List<EventListener> listeners = eventMap.get(eventType);
+		
+		if (listeners == null) {
+			listeners = new ArrayList<EventListener>();
+		}
+		
+		listeners.add(listener);
+		
+		eventMap.put(eventType, listeners);
 	}
 }
