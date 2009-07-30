@@ -33,36 +33,32 @@
 package com.boardgamebuddy.basic.event;
 
 import com.boardgamebuddy.core.event.Event;
-import com.boardgamebuddy.core.move.Move;
 
 /**
- * Implementation of an event for when a move is made
+ * Event implementation for TicTacToe
  */
-public class MoveEvent implements Event {
+public class BasicEvent implements Event {
 
-	private String type;
-	private Move move;
+	/**
+	 * Various events for TicTacToe
+	 */
+	public enum BasicEventType { MOVE_COMPLETE, TURN_COMPLETE, 
+		ROUND_COMPLETE, GAME_COMPLETE };
+	
+	private BasicEventType eventType;
 	
 	/**
-	 * Constructor for event type and move
+	 * Constructor for event type
 	 */
-	public MoveEvent(final String typeIn, final Move moveIn) {
-		this.type = typeIn;
-		this.move = moveIn;
+	public BasicEvent(final BasicEventType eventTypeIn) {
+		this.eventType = eventTypeIn;
 	}
 	
 	/**
-	 * Returns the event type
+	 * Getter for event type
 	 */
 	public final String getEventType() {
-		return type;
-	}
-	
-	/**
-	 * Returns the move that triggered the event
-	 */
-	public final Move getMove() {
-		return move;
+		return eventType.toString();
 	}
 
 	/**
@@ -70,6 +66,6 @@ public class MoveEvent implements Event {
 	 */
 	@Override
 	public final String toString() {
-		return "" + type + " " + move;
+		return eventType.toString();
 	}
 }

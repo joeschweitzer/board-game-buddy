@@ -30,46 +30,48 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.boardgamebuddy.basic.event;
+package com.boardgamebuddy.basic.round;
 
+import com.boardgamebuddy.basic.event.BasicEvent;
+import com.boardgamebuddy.basic.event.BasicEvent.BasicEventType;
 import com.boardgamebuddy.core.event.Event;
-import com.boardgamebuddy.core.move.Move;
+import com.boardgamebuddy.core.event.EventListener;
+import com.boardgamebuddy.core.event.EventManager;
+import com.boardgamebuddy.core.game.Game;
+import com.boardgamebuddy.core.round.RoundManager;
 
 /**
- * Implementation of an event for when a move is made
+ * Round manager implementation for TicTacToe
  */
-public class MoveEvent implements Event {
+public class BasicRoundManager implements RoundManager, EventListener {
 
-	private String type;
-	private Move move;
+	private Game game;
+	private EventManager eventManager;
+	private int numTurns = 0;
 	
 	/**
-	 * Constructor for event type and move
+	 * Constructor for game
 	 */
-	public MoveEvent(final String typeIn, final Move moveIn) {
-		this.type = typeIn;
-		this.move = moveIn;
+	public BasicRoundManager(final Game gameIn) {
+		this.game = gameIn;
+		this.eventManager = this.game.getEventManager();
+		
+		eventManager.registerListener(
+				BasicEventType.TURN_COMPLETE.toString(), this);
 	}
 	
 	/**
-	 * Returns the event type
+	 * Callback when event is raised during the game
 	 */
-	public final String getEventType() {
-		return type;
-	}
-	
-	/**
-	 * Returns the move that triggered the event
-	 */
-	public final Move getMove() {
-		return move;
-	}
-
-	/**
-	 * String representation
-	 */
-	@Override
-	public final String toString() {
-		return "" + type + " " + move;
+	public final void eventRaised(final Event event) {
+		if (BasicEventType.TURN_COMPLETE.equals(
+				BasicEventType.valueOf(event.getEventType()))) {
+			numTurns++;
+		}
+		
+		if (numTurns % 2 == 0) {
+			eventManager.raiseEvent(
+					new BasicEvent(BasicEventType.ROUND_COMPLETE));
+		}
 	}
 }

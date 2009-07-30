@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="bgb.core" default="jar" basedir=".">
+
+	<description>
+    Board Game Buddy - http://boardgamebuddy.com
+    Copyright (C) 2009 Joe Schweitzer
+	Board Game Buddy is licensed under the New BSD License
+	Board Game Buddy comes with ABSOLUTELY NO WARRANTY
+    </description>
+
+	<property file="build.properties" />
+	
+	<target name="jar" />
+	
+</project>

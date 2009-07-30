@@ -30,46 +30,28 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.boardgamebuddy.basic.event;
+package com.boardgamebuddy.basic.user;
 
-import com.boardgamebuddy.core.event.Event;
-import com.boardgamebuddy.core.move.Move;
+import com.boardgamebuddy.core.user.User;
 
 /**
- * Implementation of an event for when a move is made
+ * User implementation for TicTacToe
  */
-public class MoveEvent implements Event {
+public class BasicUser implements User {
 
-	private String type;
-	private Move move;
+	private String userName;
 	
 	/**
-	 * Constructor for event type and move
+	 * Constructor for user name
 	 */
-	public MoveEvent(final String typeIn, final Move moveIn) {
-		this.type = typeIn;
-		this.move = moveIn;
-	}
-	
-	/**
-	 * Returns the event type
-	 */
-	public final String getEventType() {
-		return type;
-	}
-	
-	/**
-	 * Returns the move that triggered the event
-	 */
-	public final Move getMove() {
-		return move;
+	public BasicUser(final String userNameIn) {
+		this.userName = userNameIn;
 	}
 
 	/**
-	 * String representation
+	 * Getter for user name
 	 */
-	@Override
-	public final String toString() {
-		return "" + type + " " + move;
+	public final String getUserName() {
+		return userName;
 	}
 }
