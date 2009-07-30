@@ -33,12 +33,12 @@
 package com.boardgamebuddy.tictactoe.move;
 
 import com.boardgamebuddy.basic.event.MoveEvent;
+import com.boardgamebuddy.basic.event.BasicEvent.BasicEventType;
 import com.boardgamebuddy.core.event.EventManager;
 import com.boardgamebuddy.core.game.Game;
 import com.boardgamebuddy.core.move.Move;
 import com.boardgamebuddy.core.move.MoveManager;
 import com.boardgamebuddy.core.player.Player;
-import com.boardgamebuddy.tictactoe.event.TicTacToeEvent.TicTacToeEventType;
 
 /**
  * TicTacToe implementation of MoveManager
@@ -75,6 +75,6 @@ public class TicTacToeMoveManager implements MoveManager {
 		move.getSpace().setPiece(move.getPiece());
 		
 		eventManager.raiseEvent(new MoveEvent(
-				TicTacToeEventType.MOVE_COMPLETE.toString(), move));
+				BasicEventType.MOVE_COMPLETE.toString(), move));
 	}
 }
