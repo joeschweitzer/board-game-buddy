@@ -33,6 +33,9 @@
 		<javac srcdir="${src.dir}" destdir="${classes.dir}" debug="yes">
 			<classpath refid="cobertura.classpath" />
 		</javac>
+		<javac srcdir="${test.dir}" destdir="${classes.dir}" debug="yes">
+			<classpath refid="cobertura.classpath" />
+		</javac>
 	</target>
 
 	<target name="instrument" depends="init,compile">
@@ -60,7 +63,7 @@
 					don't instrument the test classes.
 				-->
 				<include name="**/*.class" />
-				<exclude name="**/*Test.class" />
+				<exclude name="**/Test*.class" />
 			</fileset>
 		</cobertura-instrument>
 	</target>
@@ -84,8 +87,8 @@
 			<formatter type="xml" />
 			<test name="${testcase}" todir="${reports.xml.dir}" if="testcase" />
 			<batchtest todir="${reports.xml.dir}" unless="testcase">
-				<fileset dir="${src.dir}">
-					<include name="**/*Test.java" />
+				<fileset dir="${test.dir}">
+					<include name="**/Test*.java" />
 				</fileset>
 			</batchtest>
 		</junit>
