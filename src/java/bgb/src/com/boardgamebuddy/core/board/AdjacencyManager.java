@@ -33,27 +33,13 @@
 package com.boardgamebuddy.core.board;
 
 /**
- * Interface for representing a game board
+ * Manager for figuring out which spaces are adjacent to which other spaces
  */
-public interface Board {
+public interface AdjacencyManager {
 
 	/**
-	 * Returns the space with the given value
+	 * Returns the space that is adjacent to the given space in the
+	 * given direction or null if no such space exists
 	 */
-	Space getSpaceByValue(String value);
-
-	/**
-	 * Returns the space with the given index
-	 */
-	Space getSpaceByIndex(int index);
-
-	/**
-	 * Returns the size of this board
-	 */
-	int getSize();
-
-	/**
-	 * Prints the board in its current state
-	 */
-	void printBoard();
+	Space getAdjacentSpace(Space space, String direction);
 }

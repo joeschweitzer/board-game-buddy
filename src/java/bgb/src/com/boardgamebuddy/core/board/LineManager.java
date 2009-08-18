@@ -33,27 +33,16 @@
 package com.boardgamebuddy.core.board;
 
 /**
- * Interface for representing a game board
+ * Manager for dealing with lines on the board
  */
-public interface Board {
+public interface LineManager {
 
 	/**
-	 * Returns the space with the given value
+	 * Returns true if this space completes a straight vertical, 
+	 * horizontal, or diagonal line across the whole board - to complete
+	 * the line the piece that is on the given space must be the same
+	 * piece as the other spaces that are in the same column, row, or
+	 * diagonal, etc. as this space.
 	 */
-	Space getSpaceByValue(String value);
-
-	/**
-	 * Returns the space with the given index
-	 */
-	Space getSpaceByIndex(int index);
-
-	/**
-	 * Returns the size of this board
-	 */
-	int getSize();
-
-	/**
-	 * Prints the board in its current state
-	 */
-	void printBoard();
+	boolean doesCompleteStraightLine(Space space);
 }

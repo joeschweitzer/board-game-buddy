@@ -30,30 +30,28 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.boardgamebuddy.core.board;
+package com.boardgamebuddy.basic.board;
+
+import com.boardgamebuddy.core.board.Piece;
 
 /**
- * Interface for representing a game board
+ * Test helper for a basic piece
  */
-public interface Board {
+public class BasicPieceHelper implements Piece {
 
+	private String value;
+	
 	/**
-	 * Returns the space with the given value
+	 * Constructor for value
 	 */
-	Space getSpaceByValue(String value);
-
+	public BasicPieceHelper(final String valueIn) {
+		this.value = valueIn;
+	}
+	
 	/**
-	 * Returns the space with the given index
+	 * Get value
 	 */
-	Space getSpaceByIndex(int index);
-
-	/**
-	 * Returns the size of this board
-	 */
-	int getSize();
-
-	/**
-	 * Prints the board in its current state
-	 */
-	void printBoard();
+	public final String getValue() {
+		return value;
+	}
 }
