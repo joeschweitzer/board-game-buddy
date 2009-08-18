@@ -30,30 +30,40 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.boardgamebuddy.core.board;
+package com.boardgamebuddy.basic.board;
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import com.boardgamebuddy.core.board.Board;
 
 /**
- * Interface for representing a game board
+ * Test class for BasicBoardManager
  */
-public interface Board {
+public class TestBasicBoardManager {
 
+	private BasicBoardManager boardManager;
+	private Board board;
+	
 	/**
-	 * Returns the space with the given value
+	 * Setup for test case
 	 */
-	Space getSpaceByValue(String value);
-
+	@Before
+	public final void setUp() {
+		boardManager = new BasicBoardManager();
+		board = new SquareBoard(1);
+	}
+	
 	/**
-	 * Returns the space with the given index
+	 * Test for adding board and making sure it is the same as the
+	 * main board
 	 */
-	Space getSpaceByIndex(int index);
-
-	/**
-	 * Returns the size of this board
-	 */
-	int getSize();
-
-	/**
-	 * Prints the board in its current state
-	 */
-	void printBoard();
+	@Test
+	public final void testAddBoard() {
+		boardManager.addBoard(board);
+		assertEquals(board, boardManager.getMainBoard());
+	}
+	
 }
