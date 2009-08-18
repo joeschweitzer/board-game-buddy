@@ -85,6 +85,14 @@ public class BasicSpace implements Space {
 	public final boolean equals(final Object obj) {
 		BasicSpace space = (BasicSpace) obj;
 		
+		if (space == null) {
+			return false;
+		}
+		
+		if (space.getValue() == null) {
+			return value == null;
+		}
+		
 		if (space.getValue().equals(value)) {
 			return true;
 		}
