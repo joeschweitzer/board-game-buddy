@@ -32,66 +32,63 @@
  */
 package com.boardgamebuddy.basic.board;
 
-import com.boardgamebuddy.core.board.Piece;
+import com.boardgamebuddy.core.board.Board;
 
 /**
- * Test helper for a basic piece
+ * Test helper for square boards
  */
-public class BasicPieceHelper implements Piece {
+public class SquareBoardHelper {
 
-	private String value;
+	public static final int BOARD_SIZE = 3;
+	
+	public static final int TOP_LEFT = 0;
+	public static final int TOP = 1;
+	public static final int TOP_RIGHT = 2;
+	public static final int LEFT = 3;
+	public static final int CENTER = 4;
+	public static final int RIGHT = 5;
+	public static final int BOTTOM_LEFT = 6;
+	public static final int BOTTOM = 7;
+	public static final int BOTTOM_RIGHT = 8;
+
+	/**
+	 * Private constructor
+	 */
+	private SquareBoardHelper() {
+		
+	}
 	
 	/**
-	 * Constructor for value
+	 * Returns a 3x3 board full of pieces
 	 */
-	public BasicPieceHelper(final String valueIn) {
-		this.value = valueIn;
+	public static final SquareBoard getFullBoard() {
+
+		SquareBoard fullBoard = new SquareBoard(BOARD_SIZE);
+		
+		for (int ctr = 0; ctr < (BOARD_SIZE * BOARD_SIZE); ctr++) {
+			fullBoard.getSpaceByIndex(ctr).setPiece(
+					new BasicPieceHelper(String.valueOf(ctr)));
+		}
+		
+		return fullBoard;
+	}
+
+	/**
+	 * Returns a 3x3 board with no pieces
+	 */
+	public static final SquareBoard getEmptyBoard() {
+
+		SquareBoard emptyBoard = new SquareBoard(BOARD_SIZE);
+		
+		return emptyBoard;
 	}
 	
 	/**
-	 * Get value
+	 * Sets a piece on the board
 	 */
-	public final String getValue() {
-		return value;
-	}
-
-	/**
-	 * Hash code generated implementation
-	 */
-	@Override
-	public final int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		if (value == null) {
-			result = prime * result;
-		} else {
-			result = prime * result + value.hashCode();
-		}
-		return result;
-	}
-
-	/**
-	 * Equals generated implementation
-	 */
-	@Override
-	public final boolean equals(final Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (getClass() != obj.getClass()) {
-			return false;
-		}
-		BasicPieceHelper other = (BasicPieceHelper) obj;
-		if (value == null) {
-			if (other.value != null) {
-				return false;
-			}
-		} else if (!value.equals(other.value)) {
-			return false;
-		}
-		return true;
+	public static final void setPiece(final Board board, final int index, 
+			final String value) {
+		board.getSpaceByIndex(index).setPiece(
+				new BasicPieceHelper(value));
 	}
 }

@@ -127,7 +127,7 @@ public class SquareLineManager implements LineManager {
 		return (
 				countAdjacentSpaces(space, "SOUTHWEST") 
 				+ countAdjacentSpaces(space, "NORTHEAST")
-				) == board.getSize();
+				+ 1) == board.getSize();
 	}
 	
 	/**
@@ -137,7 +137,7 @@ public class SquareLineManager implements LineManager {
 		return (
 				countAdjacentSpaces(space, "NORTHWEST") 
 				+ countAdjacentSpaces(space, "SOUTHEAST")
-				) == board.getSize();
+				+ 1) == board.getSize();
 	}
 	
 	/**
@@ -149,10 +149,10 @@ public class SquareLineManager implements LineManager {
 		Space currSpace = board.getAdjacentSpace(space, direction);
 		int adjacentSpaces = 0;
 		
-		do {
+		while (currSpace != null) {
 			adjacentSpaces++;
 			currSpace = board.getAdjacentSpace(currSpace, direction);
-		} while(currSpace != null);
+		}
 		
 		return adjacentSpaces;
 	}
