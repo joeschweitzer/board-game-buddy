@@ -32,13 +32,12 @@
  */
 package com.boardgamebuddy.basic.board;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import com.boardgamebuddy.core.board.Board;
 import com.boardgamebuddy.core.board.Space;
 
 /**
@@ -46,22 +45,15 @@ import com.boardgamebuddy.core.board.Space;
  */
 public class TestSquareAdjacencyManager {
 
-	private static final int BOARD_SIZE = 3;
-	
-	private Board fullBoard;
 	private SquareAdjacencyManager adjacencyManager;
+	private SquareBoard fullBoard;
 	
 	/**
 	 * Setup for full board
 	 */
 	@Before
 	public final void setupFullBoard() {
-		fullBoard = new SquareBoard(BOARD_SIZE);
-		
-		for (int ctr = 0; ctr < (BOARD_SIZE * BOARD_SIZE); ctr++) {
-			fullBoard.getSpaceByIndex(ctr).setPiece(
-					new BasicPieceHelper(String.valueOf(ctr)));
-		}
+		fullBoard = SquareBoardHelper.getFullBoard();
 		
 		adjacencyManager = new SquareAdjacencyManager(fullBoard);
 	}
@@ -72,23 +64,23 @@ public class TestSquareAdjacencyManager {
 	@Test
 	public final void testGetAdjacentSpaceMiddle() {
 
-		Space middleSpace = fullBoard.getSpaceByIndex(4);
+		Space middleSpace = fullBoard.getSpaceByIndex(SquareBoardHelper.CENTER);
 
-		assertEquals(fullBoard.getSpaceByIndex(0),
+		assertEquals(fullBoard.getSpaceByIndex(SquareBoardHelper.TOP_LEFT),
 				adjacencyManager.getAdjacentSpace(middleSpace, "NORTHWEST"));
-		assertEquals(fullBoard.getSpaceByIndex(1),
+		assertEquals(fullBoard.getSpaceByIndex(SquareBoardHelper.TOP),
 				adjacencyManager.getAdjacentSpace(middleSpace, "NORTH"));
-		assertEquals(fullBoard.getSpaceByIndex(2),
+		assertEquals(fullBoard.getSpaceByIndex(SquareBoardHelper.TOP_RIGHT),
 				adjacencyManager.getAdjacentSpace(middleSpace, "NORTHEAST"));
-		assertEquals(fullBoard.getSpaceByIndex(3),
+		assertEquals(fullBoard.getSpaceByIndex(SquareBoardHelper.LEFT),
 				adjacencyManager.getAdjacentSpace(middleSpace, "WEST"));
-		assertEquals(fullBoard.getSpaceByIndex(5),
+		assertEquals(fullBoard.getSpaceByIndex(SquareBoardHelper.RIGHT),
 				adjacencyManager.getAdjacentSpace(middleSpace, "EAST"));
-		assertEquals(fullBoard.getSpaceByIndex(6),
+		assertEquals(fullBoard.getSpaceByIndex(SquareBoardHelper.BOTTOM_LEFT),
 				adjacencyManager.getAdjacentSpace(middleSpace, "SOUTHWEST"));
-		assertEquals(fullBoard.getSpaceByIndex(7),
+		assertEquals(fullBoard.getSpaceByIndex(SquareBoardHelper.BOTTOM),
 				adjacencyManager.getAdjacentSpace(middleSpace, "SOUTH"));
-		assertEquals(fullBoard.getSpaceByIndex(8),
+		assertEquals(fullBoard.getSpaceByIndex(SquareBoardHelper.BOTTOM_RIGHT),
 				adjacencyManager.getAdjacentSpace(middleSpace, "SOUTHEAST"));
 	}
 	
@@ -99,7 +91,8 @@ public class TestSquareAdjacencyManager {
 	public final void testGetAdjacentSpaceCorners() {
 
 		Space topLeftSpace = fullBoard.getSpaceByIndex(0);
-		Space bottomRightSpace = fullBoard.getSpaceByIndex(8);
+		Space bottomRightSpace = 
+			fullBoard.getSpaceByIndex(SquareBoardHelper.BOTTOM_RIGHT);
 
 		assertNull(adjacencyManager.getAdjacentSpace(
 				topLeftSpace, "NORTHWEST"));
