@@ -92,7 +92,7 @@ public class TicTacToe {
 			piece = new TicTacToePiece(player, PieceType.O);
 		}
 		
-		Space space = game.getBoardManager().getMainBoard().getSpace(
+		Space space = game.getBoardManager().getMainBoard().getSpaceByValue(
 				String.valueOf(index));
 		
 		return new BasicMove(player, space, piece);
