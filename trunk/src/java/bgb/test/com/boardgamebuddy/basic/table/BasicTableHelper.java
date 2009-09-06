@@ -30,65 +30,34 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.boardgamebuddy.basic.board;
+package com.boardgamebuddy.basic.table;
 
-import com.boardgamebuddy.core.board.Board;
+import java.util.ArrayList;
+import java.util.Collection;
+
+import com.boardgamebuddy.core.game.Game;
+import com.boardgamebuddy.core.table.Table;
+import com.boardgamebuddy.core.user.User;
 
 /**
- * Test helper for square boards
+ * Test table helper
  */
-public final class SquareBoardHelper {
+public class BasicTableHelper implements Table {
 
-	public static final int BOARD_SIZE = 3;
-	
-	public static final int TOP_LEFT = 0;
-	public static final int TOP = 1;
-	public static final int TOP_RIGHT = 2;
-	public static final int LEFT = 3;
-	public static final int CENTER = 4;
-	public static final int RIGHT = 5;
-	public static final int BOTTOM_LEFT = 6;
-	public static final int BOTTOM = 7;
-	public static final int BOTTOM_RIGHT = 8;
-
-	/**
-	 * Private constructor
-	 */
-	private SquareBoardHelper() {
-		
-	}
+	private Collection<User> users = new ArrayList<User>();
+	private Game game;
 	
 	/**
-	 * Returns a 3x3 board full of pieces
+	 * Adds the given user to this table
 	 */
-	public static SquareBoard getFullBoard() {
-
-		SquareBoard fullBoard = new SquareBoard(BOARD_SIZE);
-		
-		for (int ctr = 0; ctr < (BOARD_SIZE * BOARD_SIZE); ctr++) {
-			fullBoard.getSpaceByIndex(ctr).setPiece(
-					new BasicPieceHelper(String.valueOf(ctr)));
-		}
-		
-		return fullBoard;
+	public final void addUser(final User user) {
+		users.add(user);
 	}
 
 	/**
-	 * Returns a 3x3 board with no pieces
+	 * Returns the game for this table
 	 */
-	public static SquareBoard getEmptyBoard() {
-
-		SquareBoard emptyBoard = new SquareBoard(BOARD_SIZE);
-		
-		return emptyBoard;
-	}
-	
-	/**
-	 * Sets a piece on the board
-	 */
-	public static void setPiece(final Board board, final int index, 
-			final String value) {
-		board.getSpaceByIndex(index).setPiece(
-				new BasicPieceHelper(value));
+	public final Game getGame() {
+		return game;
 	}
 }

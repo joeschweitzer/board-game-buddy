@@ -30,65 +30,40 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.boardgamebuddy.basic.board;
+package com.boardgamebuddy.basic.event;
 
-import com.boardgamebuddy.core.board.Board;
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+
+import com.boardgamebuddy.basic.board.BasicPieceHelper;
+import com.boardgamebuddy.basic.board.BasicSpace;
+import com.boardgamebuddy.basic.move.BasicMove;
+import com.boardgamebuddy.basic.player.BasicPlayer;
+import com.boardgamebuddy.core.board.Piece;
+import com.boardgamebuddy.core.board.Space;
+import com.boardgamebuddy.core.move.Move;
+import com.boardgamebuddy.core.player.Player;
 
 /**
- * Test helper for square boards
+ * Test for MoveEvent
  */
-public final class SquareBoardHelper {
-
-	public static final int BOARD_SIZE = 3;
-	
-	public static final int TOP_LEFT = 0;
-	public static final int TOP = 1;
-	public static final int TOP_RIGHT = 2;
-	public static final int LEFT = 3;
-	public static final int CENTER = 4;
-	public static final int RIGHT = 5;
-	public static final int BOTTOM_LEFT = 6;
-	public static final int BOTTOM = 7;
-	public static final int BOTTOM_RIGHT = 8;
+public class TestMoveEvent {
 
 	/**
-	 * Private constructor
+	 * Test for basic getters/toString for MoveEvent
 	 */
-	private SquareBoardHelper() {
+	@Test
+	public final void testValues() {
+		Player player = new BasicPlayer("player");
+		Space space = new BasicSpace("space");
+		Piece piece = new BasicPieceHelper("piece");
 		
-	}
-	
-	/**
-	 * Returns a 3x3 board full of pieces
-	 */
-	public static SquareBoard getFullBoard() {
-
-		SquareBoard fullBoard = new SquareBoard(BOARD_SIZE);
+		Move move = new BasicMove(player, space, piece);
+		MoveEvent event = new MoveEvent("blah", move);
 		
-		for (int ctr = 0; ctr < (BOARD_SIZE * BOARD_SIZE); ctr++) {
-			fullBoard.getSpaceByIndex(ctr).setPiece(
-					new BasicPieceHelper(String.valueOf(ctr)));
-		}
-		
-		return fullBoard;
-	}
-
-	/**
-	 * Returns a 3x3 board with no pieces
-	 */
-	public static SquareBoard getEmptyBoard() {
-
-		SquareBoard emptyBoard = new SquareBoard(BOARD_SIZE);
-		
-		return emptyBoard;
-	}
-	
-	/**
-	 * Sets a piece on the board
-	 */
-	public static void setPiece(final Board board, final int index, 
-			final String value) {
-		board.getSpaceByIndex(index).setPiece(
-				new BasicPieceHelper(value));
+		assertEquals("blah", event.getEventType());
+		assertEquals(move, event.getMove());
+		assertEquals("blah " + move.toString(), event.toString());
 	}
 }

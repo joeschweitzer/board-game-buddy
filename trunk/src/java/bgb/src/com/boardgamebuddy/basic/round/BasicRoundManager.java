@@ -69,7 +69,7 @@ public class BasicRoundManager implements RoundManager, EventListener {
 			numTurns++;
 		}
 		
-		if (numTurns % 2 == 0) {
+		if (numTurns != 0 && numTurns % 2 == 0) {
 			eventManager.raiseEvent(
 					new BasicEvent(BasicEventType.ROUND_COMPLETE));
 		}
