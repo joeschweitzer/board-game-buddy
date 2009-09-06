@@ -30,65 +30,25 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.boardgamebuddy.basic.board;
+package com.boardgamebuddy.basic.table;
 
-import com.boardgamebuddy.core.board.Board;
+import org.junit.Test;
+
+import com.boardgamebuddy.core.table.Table;
 
 /**
- * Test helper for square boards
+ * Test for BasicTableManager
  */
-public final class SquareBoardHelper {
-
-	public static final int BOARD_SIZE = 3;
-	
-	public static final int TOP_LEFT = 0;
-	public static final int TOP = 1;
-	public static final int TOP_RIGHT = 2;
-	public static final int LEFT = 3;
-	public static final int CENTER = 4;
-	public static final int RIGHT = 5;
-	public static final int BOTTOM_LEFT = 6;
-	public static final int BOTTOM = 7;
-	public static final int BOTTOM_RIGHT = 8;
+public class TestBasicTableManager {
 
 	/**
-	 * Private constructor
+	 * Test for adding a new table
 	 */
-	private SquareBoardHelper() {
+	@Test
+	public final void testAddNewTable() {
+		Table table = new BasicTableHelper();
+		BasicTableManager tableManager = new BasicTableManager();
 		
-	}
-	
-	/**
-	 * Returns a 3x3 board full of pieces
-	 */
-	public static SquareBoard getFullBoard() {
-
-		SquareBoard fullBoard = new SquareBoard(BOARD_SIZE);
-		
-		for (int ctr = 0; ctr < (BOARD_SIZE * BOARD_SIZE); ctr++) {
-			fullBoard.getSpaceByIndex(ctr).setPiece(
-					new BasicPieceHelper(String.valueOf(ctr)));
-		}
-		
-		return fullBoard;
-	}
-
-	/**
-	 * Returns a 3x3 board with no pieces
-	 */
-	public static SquareBoard getEmptyBoard() {
-
-		SquareBoard emptyBoard = new SquareBoard(BOARD_SIZE);
-		
-		return emptyBoard;
-	}
-	
-	/**
-	 * Sets a piece on the board
-	 */
-	public static void setPiece(final Board board, final int index, 
-			final String value) {
-		board.getSpaceByIndex(index).setPiece(
-				new BasicPieceHelper(value));
+		tableManager.addNewTable(table);
 	}
 }

@@ -30,65 +30,36 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.boardgamebuddy.basic.board;
+package com.boardgamebuddy.basic.player;
 
-import com.boardgamebuddy.core.board.Board;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+
+import org.junit.Test;
 
 /**
- * Test helper for square boards
+ * Test for BasicPlayer
  */
-public final class SquareBoardHelper {
-
-	public static final int BOARD_SIZE = 3;
-	
-	public static final int TOP_LEFT = 0;
-	public static final int TOP = 1;
-	public static final int TOP_RIGHT = 2;
-	public static final int LEFT = 3;
-	public static final int CENTER = 4;
-	public static final int RIGHT = 5;
-	public static final int BOTTOM_LEFT = 6;
-	public static final int BOTTOM = 7;
-	public static final int BOTTOM_RIGHT = 8;
+public class TestBasicPlayer {
 
 	/**
-	 * Private constructor
+	 * Test for BasicPlayer
 	 */
-	private SquareBoardHelper() {
-		
-	}
-	
-	/**
-	 * Returns a 3x3 board full of pieces
-	 */
-	public static SquareBoard getFullBoard() {
-
-		SquareBoard fullBoard = new SquareBoard(BOARD_SIZE);
-		
-		for (int ctr = 0; ctr < (BOARD_SIZE * BOARD_SIZE); ctr++) {
-			fullBoard.getSpaceByIndex(ctr).setPiece(
-					new BasicPieceHelper(String.valueOf(ctr)));
-		}
-		
-		return fullBoard;
+	@Test
+	public final void testBasicPlayer() {
+		BasicPlayer player = new BasicPlayer("player");
+		assertEquals("player", player.getName());
+		assertEquals("player", player.toString());
 	}
 
 	/**
-	 * Returns a 3x3 board with no pieces
+	 * Test for BasicPlayer passing in null name
 	 */
-	public static SquareBoard getEmptyBoard() {
+	@Test
+	public final void testBasicPlayerNullName() {
+		BasicPlayer player = new BasicPlayer(null);
+		assertNull(player.getName());
+		assertEquals("", player.toString());
+	}
 
-		SquareBoard emptyBoard = new SquareBoard(BOARD_SIZE);
-		
-		return emptyBoard;
-	}
-	
-	/**
-	 * Sets a piece on the board
-	 */
-	public static void setPiece(final Board board, final int index, 
-			final String value) {
-		board.getSpaceByIndex(index).setPiece(
-				new BasicPieceHelper(value));
-	}
 }

@@ -1,5 +1,5 @@
 /**
- * Board Game Buddy - A board game framework
+ * Board Game Buddy - A emptyBoard game framework
  * 
  * Copyright (c) 2009, Joe Schweitzer
  * All rights reserved.
@@ -34,7 +34,6 @@ package com.boardgamebuddy.basic.board;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -49,21 +48,25 @@ public class TestSquareLineManager {
 	private static final String VALUE = "X";
 	private static final String DIFF_VALUE = "blahblah";
 	
-	private SquareBoard board;
-	private SquareLineManager lineManager;
+	private SquareBoard emptyBoard;
+	private SquareLineManager emptyLineManager;
+	private SquareBoard fullBoard;
+	private SquareLineManager fullLineManager;
 	private Space centerSpace;
 	
 	/**
-	 * Setup for board
+	 * Setup for emptyBoard
 	 */
 	@Before
-	public final void setupBoard() {
-		board = SquareBoardHelper.getEmptyBoard();
+	public final void setup() {
+		emptyBoard = SquareBoardHelper.getEmptyBoard();
+		fullBoard = SquareBoardHelper.getFullBoard();
 		
-		centerSpace = board.getSpaceByIndex(SquareBoardHelper.CENTER);
-		SquareBoardHelper.setPiece(board, SquareBoardHelper.CENTER, VALUE);
+		centerSpace = emptyBoard.getSpaceByIndex(SquareBoardHelper.CENTER);
+		SquareBoardHelper.setPiece(emptyBoard, SquareBoardHelper.CENTER, VALUE);
 		
-		lineManager = new SquareLineManager(board);
+		emptyLineManager = new SquareLineManager(emptyBoard);
+		fullLineManager = new SquareLineManager(fullBoard);
 	}
 
 	/**
@@ -72,7 +75,7 @@ public class TestSquareLineManager {
 	 */
 	@Test
 	public final void testDoesCompleteVerticalLineEmptySpaces() {
-		assertFalse(lineManager.doesCompleteStraightLine(centerSpace));
+		assertFalse(emptyLineManager.doesCompleteStraightLine(centerSpace));
 	}
 
 	/**
@@ -81,9 +84,11 @@ public class TestSquareLineManager {
 	 */
 	@Test
 	public final void testDoesCompleteVerticalLineNonValueSpaces() {
-		SquareBoardHelper.setPiece(board, SquareBoardHelper.TOP, DIFF_VALUE);
-		SquareBoardHelper.setPiece(board, SquareBoardHelper.BOTTOM, DIFF_VALUE);
-		assertFalse(lineManager.doesCompleteStraightLine(centerSpace));
+		SquareBoardHelper.setPiece(
+				emptyBoard, SquareBoardHelper.TOP, DIFF_VALUE);
+		SquareBoardHelper.setPiece(
+				emptyBoard, SquareBoardHelper.BOTTOM, DIFF_VALUE);
+		assertFalse(emptyLineManager.doesCompleteStraightLine(centerSpace));
 	}
 
 	/**
@@ -92,9 +97,9 @@ public class TestSquareLineManager {
 	 */
 	@Test
 	public final void testDoesCompleteVerticalLineValueSpaces() {
-		SquareBoardHelper.setPiece(board, SquareBoardHelper.TOP, VALUE);
-		SquareBoardHelper.setPiece(board, SquareBoardHelper.BOTTOM, VALUE);
-		assertTrue(lineManager.doesCompleteStraightLine(centerSpace));
+		SquareBoardHelper.setPiece(emptyBoard, SquareBoardHelper.TOP, VALUE);
+		SquareBoardHelper.setPiece(emptyBoard, SquareBoardHelper.BOTTOM, VALUE);
+		assertTrue(emptyLineManager.doesCompleteStraightLine(centerSpace));
 	}
 
 	/**
@@ -103,7 +108,7 @@ public class TestSquareLineManager {
 	 */
 	@Test
 	public final void testDoesCompleteHorizontalLineEmptySpaces() {
-		assertFalse(lineManager.doesCompleteStraightLine(centerSpace));
+		assertFalse(emptyLineManager.doesCompleteStraightLine(centerSpace));
 	}
 
 	/**
@@ -112,9 +117,11 @@ public class TestSquareLineManager {
 	 */
 	@Test
 	public final void testDoesCompleteHorizontalLineNonValueSpaces() {
-		SquareBoardHelper.setPiece(board, SquareBoardHelper.LEFT, DIFF_VALUE);
-		SquareBoardHelper.setPiece(board, SquareBoardHelper.RIGHT, DIFF_VALUE);
-		assertFalse(lineManager.doesCompleteStraightLine(centerSpace));
+		SquareBoardHelper.setPiece(
+				emptyBoard, SquareBoardHelper.LEFT, DIFF_VALUE);
+		SquareBoardHelper.setPiece(
+				emptyBoard, SquareBoardHelper.RIGHT, DIFF_VALUE);
+		assertFalse(emptyLineManager.doesCompleteStraightLine(centerSpace));
 	}
 
 	/**
@@ -123,9 +130,9 @@ public class TestSquareLineManager {
 	 */
 	@Test
 	public final void testDoesCompleteHorizontalLineValueSpaces() {
-		SquareBoardHelper.setPiece(board, SquareBoardHelper.LEFT, VALUE);
-		SquareBoardHelper.setPiece(board, SquareBoardHelper.RIGHT, VALUE);
-		assertTrue(lineManager.doesCompleteStraightLine(centerSpace));
+		SquareBoardHelper.setPiece(emptyBoard, SquareBoardHelper.LEFT, VALUE);
+		SquareBoardHelper.setPiece(emptyBoard, SquareBoardHelper.RIGHT, VALUE);
+		assertTrue(emptyLineManager.doesCompleteStraightLine(centerSpace));
 	}
 
 	/**
@@ -134,7 +141,7 @@ public class TestSquareLineManager {
 	 */
 	@Test
 	public final void testDoesCompleteUpDiagonalLineEmptySpaces() {
-		assertFalse(lineManager.doesCompleteStraightLine(centerSpace));
+		assertFalse(emptyLineManager.doesCompleteStraightLine(centerSpace));
 	}
 
 	/**
@@ -144,10 +151,10 @@ public class TestSquareLineManager {
 	@Test
 	public final void testDoesCompleteUpDiagonalLineNonValueSpaces() {
 		SquareBoardHelper.setPiece(
-				board, SquareBoardHelper.BOTTOM_LEFT, DIFF_VALUE);
+				emptyBoard, SquareBoardHelper.BOTTOM_LEFT, DIFF_VALUE);
 		SquareBoardHelper.setPiece(
-				board, SquareBoardHelper.TOP_RIGHT, DIFF_VALUE);
-		assertFalse(lineManager.doesCompleteStraightLine(centerSpace));
+				emptyBoard, SquareBoardHelper.TOP_RIGHT, DIFF_VALUE);
+		assertFalse(emptyLineManager.doesCompleteStraightLine(centerSpace));
 	}
 
 	/**
@@ -156,9 +163,11 @@ public class TestSquareLineManager {
 	 */
 	@Test
 	public final void testDoesCompleteUpDiagonalLineValueSpaces() {
-		SquareBoardHelper.setPiece(board, SquareBoardHelper.BOTTOM_LEFT, VALUE);
-		SquareBoardHelper.setPiece(board, SquareBoardHelper.TOP_RIGHT, VALUE);
-		assertTrue(lineManager.doesCompleteStraightLine(centerSpace));
+		SquareBoardHelper.setPiece(
+				emptyBoard, SquareBoardHelper.BOTTOM_LEFT, VALUE);
+		SquareBoardHelper.setPiece(
+				emptyBoard, SquareBoardHelper.TOP_RIGHT, VALUE);
+		assertTrue(emptyLineManager.doesCompleteStraightLine(centerSpace));
 	}
 
 	/**
@@ -167,7 +176,7 @@ public class TestSquareLineManager {
 	 */
 	@Test
 	public final void testDoesCompleteDownDiagonalLineEmptySpaces() {
-		assertFalse(lineManager.doesCompleteStraightLine(centerSpace));
+		assertFalse(emptyLineManager.doesCompleteStraightLine(centerSpace));
 	}
 
 	/**
@@ -177,10 +186,10 @@ public class TestSquareLineManager {
 	@Test
 	public final void testDoesCompleteDownDiagonalLineNonValueSpaces() {
 		SquareBoardHelper.setPiece(
-				board, SquareBoardHelper.TOP_LEFT, DIFF_VALUE);
+				emptyBoard, SquareBoardHelper.TOP_LEFT, DIFF_VALUE);
 		SquareBoardHelper.setPiece(
-				board, SquareBoardHelper.BOTTOM_RIGHT, DIFF_VALUE);
-		assertFalse(lineManager.doesCompleteStraightLine(centerSpace));
+				emptyBoard, SquareBoardHelper.BOTTOM_RIGHT, DIFF_VALUE);
+		assertFalse(emptyLineManager.doesCompleteStraightLine(centerSpace));
 	}
 
 	/**
@@ -189,10 +198,11 @@ public class TestSquareLineManager {
 	 */
 	@Test
 	public final void testDoesCompleteDownDiagonalLineValueSpaces() {
-		SquareBoardHelper.setPiece(board, SquareBoardHelper.TOP_LEFT, VALUE);
 		SquareBoardHelper.setPiece(
-				board, SquareBoardHelper.BOTTOM_RIGHT, VALUE);
-		assertTrue(lineManager.doesCompleteStraightLine(centerSpace));
+				emptyBoard, SquareBoardHelper.TOP_LEFT, VALUE);
+		SquareBoardHelper.setPiece(
+				emptyBoard, SquareBoardHelper.BOTTOM_RIGHT, VALUE);
+		assertTrue(emptyLineManager.doesCompleteStraightLine(centerSpace));
 	}
 
 	/**
@@ -200,7 +210,21 @@ public class TestSquareLineManager {
 	 */
 	@Test
 	public final void testIsOnUpDiagonal() {
-		//assertTrue(board.getSpaceByIndex(Square))
+		assertTrue(fullLineManager.isOnUpDiagonal(
+				fullBoard.getSpaceByIndex(SquareBoardHelper.BOTTOM_LEFT)));
+		assertFalse(fullLineManager.isOnUpDiagonal(
+				fullBoard.getSpaceByIndex(SquareBoardHelper.LEFT)));
+	}
+
+	/**
+	 * Test for whether a space is on a down diagonal
+	 */
+	@Test
+	public final void testIsOnDownDiagonal() {
+		assertTrue(fullLineManager.isOnDownDiagonal(
+				fullBoard.getSpaceByIndex(SquareBoardHelper.TOP_LEFT)));
+		assertFalse(fullLineManager.isOnDownDiagonal(
+				fullBoard.getSpaceByIndex(SquareBoardHelper.LEFT)));
 	}
 
 }

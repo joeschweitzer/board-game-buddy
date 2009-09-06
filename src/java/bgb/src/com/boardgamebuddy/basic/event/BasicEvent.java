@@ -68,4 +68,45 @@ public class BasicEvent implements Event {
 	public final String toString() {
 		return eventType.toString();
 	}
+
+	/**
+	 * Hashcode on eventType
+	 */
+	@Override
+	public final int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result;
+		
+		if (eventType != null) {
+			result += eventType.hashCode();
+		}
+		
+		return result;
+	}
+
+	/**
+	 * Equals on eventType
+	 */
+	@Override
+	public final boolean equals(final Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		BasicEvent other = (BasicEvent) obj;
+		if (eventType == null) {
+			if (other.eventType != null) {
+				return false;
+			}
+		} else if (!eventType.equals(other.eventType)) {
+			return false;
+		}
+		return true;
+	}
 }

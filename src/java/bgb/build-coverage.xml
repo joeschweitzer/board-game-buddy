@@ -29,16 +29,19 @@
 		<mkdir dir="${coverage.html.dir}" />
 	</target>
 
-	<target name="compile" depends="init">
+	<target name="compile-src" depends="init">
 		<javac srcdir="${src.dir}" destdir="${classes.dir}" debug="yes">
 			<classpath refid="cobertura.classpath" />
 		</javac>
+	</target>
+
+	<target name="compile-test" depends="init">
 		<javac srcdir="${test.dir}" destdir="${classes.dir}" debug="yes">
 			<classpath refid="cobertura.classpath" />
 		</javac>
 	</target>
 
-	<target name="instrument" depends="init,compile">
+	<target name="instrument" depends="init,compile-src">
 		<!--
 			Remove the coverage data file and any old instrumentation.
 		-->
@@ -68,7 +71,7 @@
 		</cobertura-instrument>
 	</target>
 
-	<target name="test" depends="init,compile">
+	<target name="test" depends="init,compile-src,compile-test">
 		<junit fork="yes" dir="${basedir}" failureProperty="test.failed">
 			<!--
 				Note the classpath order: instrumented classes are before the
@@ -141,6 +144,6 @@
 		<delete file="cobertura.ser" />
 	</target>
 
-	<target name="coverage" depends="compile,instrument,test,coverage-report,summary-coverage-report,alternate-coverage-report" description="Compile, instrument ourself, run the tests and generate JUnit and coverage reports."/>
+	<target name="coverage" depends="compile-src,instrument,compile-test,test,coverage-report,summary-coverage-report,alternate-coverage-report" description="Compile, instrument ourself, run the tests and generate JUnit and coverage reports."/>
 
 </project>
