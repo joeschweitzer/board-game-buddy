@@ -1,0 +1,16 @@
+#summary Parts of a user interface for a board game
+
+= User Interface Parts =
+
+  * Get status
+    * Board
+    * Pieces
+    * Players
+    * Round/turn
+    * Available moves
+    * Last move
+  * Commands
+    * Move
+    * End game/resign
+    * Quit
+    * Chat/message
