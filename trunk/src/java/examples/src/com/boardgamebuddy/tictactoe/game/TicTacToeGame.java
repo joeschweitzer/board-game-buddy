@@ -32,30 +32,27 @@
  */
 package com.boardgamebuddy.tictactoe.game;
 
-import java.util.Collection;
-
 import com.boardgamebuddy.basic.board.BasicBoardManager;
+import com.boardgamebuddy.basic.board.BasicPieceManager;
 import com.boardgamebuddy.basic.event.BasicEventManager;
 import com.boardgamebuddy.basic.event.BasicEvent.BasicEventType;
 import com.boardgamebuddy.basic.log.BasicLogManager;
-import com.boardgamebuddy.basic.player.BasicPlayer;
 import com.boardgamebuddy.basic.player.BasicPlayerManager;
 import com.boardgamebuddy.basic.round.BasicRoundManager;
 import com.boardgamebuddy.basic.turn.BasicTurnManager;
 import com.boardgamebuddy.core.board.Board;
 import com.boardgamebuddy.core.board.BoardManager;
+import com.boardgamebuddy.core.board.PieceManager;
 import com.boardgamebuddy.core.event.Event;
 import com.boardgamebuddy.core.event.EventListener;
 import com.boardgamebuddy.core.event.EventManager;
 import com.boardgamebuddy.core.game.Game;
 import com.boardgamebuddy.core.log.LogManager;
 import com.boardgamebuddy.core.move.MoveManager;
-import com.boardgamebuddy.core.player.Player;
 import com.boardgamebuddy.core.player.PlayerManager;
 import com.boardgamebuddy.core.round.RoundManager;
 import com.boardgamebuddy.core.score.ScoreManager;
 import com.boardgamebuddy.core.turn.TurnManager;
-import com.boardgamebuddy.core.user.User;
 import com.boardgamebuddy.tictactoe.board.TicTacToeBoard;
 import com.boardgamebuddy.tictactoe.move.TicTacToeMoveManager;
 import com.boardgamebuddy.tictactoe.score.TicTacToeScoreManager;
@@ -69,6 +66,7 @@ public class TicTacToeGame implements Game, EventListener {
 	
 	private EventManager eventManager = new BasicEventManager();
 	private BoardManager boardManager = new BasicBoardManager();
+	private PieceManager pieceManager = new BasicPieceManager();
 	private MoveManager moveManager = new TicTacToeMoveManager(this);
 	private TurnManager turnManager = new BasicTurnManager(this);
 	private RoundManager roundManager = new BasicRoundManager(this);
@@ -108,16 +106,6 @@ public class TicTacToeGame implements Game, EventListener {
 	}
 
 	/**
-	 * Add the given users as new TicTacToePlayers
-	 */
-	public final void addPlayers(final Collection<User> users) {
-		for (User user : users) {
-			Player player = new BasicPlayer(user.getUserName());
-			playerManager.addPlayer(player);
-		}
-	}
-
-	/**
 	 * Callback when an event is raised in the game
 	 */
 	public final void eventRaised(final Event event) {
@@ -133,6 +121,13 @@ public class TicTacToeGame implements Game, EventListener {
 	 */
 	public final BoardManager getBoardManager() {
 		return boardManager;
+	}
+
+	/**
+	 * Getter for pieceManager
+	 */
+	public PieceManager getPieceManager() {
+		return pieceManager;
 	}
 
 	/**

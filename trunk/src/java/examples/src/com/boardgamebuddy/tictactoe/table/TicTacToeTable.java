@@ -35,9 +35,12 @@ package com.boardgamebuddy.tictactoe.table;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import com.boardgamebuddy.basic.player.BasicPlayer;
 import com.boardgamebuddy.core.game.Game;
+import com.boardgamebuddy.core.player.Player;
 import com.boardgamebuddy.core.table.Table;
 import com.boardgamebuddy.core.user.User;
+import com.boardgamebuddy.tictactoe.board.TicTacToePiece.PieceType;
 import com.boardgamebuddy.tictactoe.game.TicTacToeGame;
 
 /**
@@ -52,11 +55,23 @@ public class TicTacToeTable implements Table {
 	 * Adds the given user to this table
 	 */
 	public final void addUser(final User user) {
+		
 		users.add(user);
 		
-		if (users.size() == 2) {
+		if (game == null) {
 			game = new TicTacToeGame("Game1");
-			game.addPlayers(users);
+		}
+		
+		String pieceTheme = PieceType.X.toString();
+		
+		if (users.size() > 1) {
+			pieceTheme = PieceType.O.toString();
+		}
+		
+		Player player = new BasicPlayer(user.getUserName(), pieceTheme);
+		game.getPlayerManager().addPlayer(player);
+		
+		if (users.size() == 2) {
 			game.start();
 		}
 	}

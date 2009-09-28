@@ -46,6 +46,7 @@ import com.boardgamebuddy.core.user.User;
 import com.boardgamebuddy.tictactoe.board.TicTacToePiece;
 import com.boardgamebuddy.tictactoe.board.TicTacToePiece.PieceType;
 import com.boardgamebuddy.tictactoe.table.TicTacToeTable;
+import com.boardgamebuddy.ui.cmdline.CommandLineManager;
 
 /**
  * TicTacToe example
@@ -71,14 +72,41 @@ public class TicTacToe {
 		Game game = table.getGame();
 		game.getTurnManager().orderPlayers(
 				game.getPlayerManager().getPlayers());
+		addPieces(game);
 		
+		CommandLineManager cmdLineManager = new CommandLineManager(game);
+		
+		cmdLineManager.start();
+		
+		/*
 		for (int ctr = 0; ctr < BOARD_SIZE; ctr++) {
 			game.getMoveManager().makeMove(getMove(game, ctr));
 		}
 		
 		game.getBoardManager().getMainBoard().printBoard();
+		*/
 	}
 	
+	/**
+	 * Add pieces to game
+	 */
+	private void addPieces(Game game) {
+		Piece piece = null;
+		Player player = game.getPlayerManager().getPlayer("Joe");
+		
+		for (int ctr = 0; ctr < (BOARD_SIZE / 2) + 1; ctr++) {
+			piece = new TicTacToePiece(player, PieceType.X);
+			game.getPieceManager().addPiece(piece);
+		}
+		
+		player = game.getPlayerManager().getPlayer("Laura");
+		
+		for (int ctr = 0; ctr < (BOARD_SIZE / 2); ctr++) {
+			piece = new TicTacToePiece(player, PieceType.O);
+			game.getPieceManager().addPiece(piece);
+		}
+	}
+
 	/**
 	 * Returns a move for the next player to go in the given game
 	 * by placing their piece at the given board index
