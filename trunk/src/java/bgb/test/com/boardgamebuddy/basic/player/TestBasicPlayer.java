@@ -47,7 +47,7 @@ public class TestBasicPlayer {
 	 */
 	@Test
 	public final void testBasicPlayer() {
-		BasicPlayer player = new BasicPlayer("player");
+		BasicPlayer player = new BasicPlayer("player", "theme1");
 		assertEquals("player", player.getName());
 		assertEquals("player", player.toString());
 	}
@@ -57,7 +57,7 @@ public class TestBasicPlayer {
 	 */
 	@Test
 	public final void testBasicPlayerNullName() {
-		BasicPlayer player = new BasicPlayer(null);
+		BasicPlayer player = new BasicPlayer(null, null);
 		assertNull(player.getName());
 		assertEquals("", player.toString());
 	}

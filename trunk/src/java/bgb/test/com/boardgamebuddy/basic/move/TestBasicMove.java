@@ -21,9 +21,9 @@ public class TestBasicMove {
 	 */
 	@Test
 	public final void testBasicMove() {
-		Player player = new BasicPlayer("player");
+		Player player = new BasicPlayer("player", "theme1");
 		Space space = new BasicSpace("space");
-		Piece piece = new BasicPieceHelper("piece");
+		Piece piece = new BasicPieceHelper("piece", player);
 		
 		BasicMove basicMove = new BasicMove(player, space, piece);
 		assertEquals(piece, basicMove.getPiece());

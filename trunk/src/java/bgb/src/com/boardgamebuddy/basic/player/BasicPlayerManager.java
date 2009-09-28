@@ -43,6 +43,8 @@ import com.boardgamebuddy.core.player.PlayerManager;
  */
 public class BasicPlayerManager implements PlayerManager {
 
+	private static int NUM_PLAYERS = 2;
+	
 	private Collection<Player> players;
 	
 	/**
@@ -56,7 +58,7 @@ public class BasicPlayerManager implements PlayerManager {
 	 * Adds the given player
 	 */
 	public final void addPlayer(final Player player) {
-		if (players.size() >= 2) {
+		if (players.size() >= NUM_PLAYERS) {
 			throw new IllegalStateException("Too many players");
 		}
 		
@@ -68,5 +70,22 @@ public class BasicPlayerManager implements PlayerManager {
 	 */
 	public final Collection<Player> getPlayers() {
 		return players;
+	}
+
+	/**
+	 * Get the player with the given name
+	 */
+	@Override
+	public Player getPlayer(String name) {
+		Player returnPlayer = null;
+		
+		for (Player player : players) {
+			if (player.getName() != null && player.getName().equals(name)) {
+				returnPlayer = player;
+				break;
+			}
+		}
+		
+		return returnPlayer;
 	}
 }

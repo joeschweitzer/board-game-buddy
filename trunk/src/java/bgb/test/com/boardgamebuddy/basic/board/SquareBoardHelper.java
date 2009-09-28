@@ -67,7 +67,7 @@ public final class SquareBoardHelper {
 		
 		for (int ctr = 0; ctr < (BOARD_SIZE * BOARD_SIZE); ctr++) {
 			fullBoard.getSpaceByIndex(ctr).setPiece(
-					new BasicPieceHelper(String.valueOf(ctr)));
+					new BasicPieceHelper(String.valueOf(ctr), null));
 		}
 		
 		return fullBoard;
@@ -89,6 +89,6 @@ public final class SquareBoardHelper {
 	public static void setPiece(final Board board, final int index, 
 			final String value) {
 		board.getSpaceByIndex(index).setPiece(
-				new BasicPieceHelper(value));
+				new BasicPieceHelper(value, null));
 	}
 }

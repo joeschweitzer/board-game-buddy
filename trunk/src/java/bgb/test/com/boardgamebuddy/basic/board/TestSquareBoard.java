@@ -136,7 +136,7 @@ public class TestSquareBoard {
 		
 		for (int ctr = 0; ctr < (BOARD_SIZE * BOARD_SIZE); ctr++) {
 			board.getSpaceByIndex(ctr).setPiece(
-					new BasicPieceHelper(String.valueOf(ctr)));
+					new BasicPieceHelper(String.valueOf(ctr), null));
 		}
 		
 		assertTrue(board.noEmptySpaces());
@@ -180,7 +180,7 @@ public class TestSquareBoard {
 	 */
 	@Test
 	public final void testPrintBoard() {
-		board.getSpaceByIndex(0).setPiece(new BasicPieceHelper("0"));
+		board.getSpaceByIndex(0).setPiece(new BasicPieceHelper("0", null));
 		
 		board.printBoard();
 	}

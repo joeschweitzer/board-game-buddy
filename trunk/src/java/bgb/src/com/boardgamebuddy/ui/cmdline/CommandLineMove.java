@@ -10,6 +10,15 @@ public class CommandLineMove {
 	private String space;
 	
 	/**
+	 * Constructor
+	 */
+	public CommandLineMove(String player, String piece, String space) {
+		this.player = player;
+		this.piece = piece;
+		this.space = space;
+	}
+
+	/**
 	 * Get player
 	 */
 	public final String getPlayer() {

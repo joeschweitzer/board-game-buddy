@@ -42,8 +42,8 @@ public class BasicEvent implements Event {
 	/**
 	 * Various events for TicTacToe
 	 */
-	public enum BasicEventType { MOVE_COMPLETE, TURN_COMPLETE, 
-		ROUND_COMPLETE, GAME_COMPLETE };
+	public enum BasicEventType { PLAYERS_READY, GAME_START,
+		MOVE_COMPLETE, TURN_COMPLETE, ROUND_COMPLETE, GAME_COMPLETE };
 	
 	private BasicEventType eventType;
 	

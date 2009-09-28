@@ -32,6 +32,8 @@
  */
 package com.boardgamebuddy.core.board;
 
+import com.boardgamebuddy.core.player.Player;
+
 /**
  * Interface for representing a piece
  */
@@ -41,4 +43,9 @@ public interface Piece {
 	 * Returns the value of this piece
 	 */
 	String getValue();
+	
+	/**
+	 * Returns the player that owns the piece
+	 */
+	Player getPlayer();
 }
