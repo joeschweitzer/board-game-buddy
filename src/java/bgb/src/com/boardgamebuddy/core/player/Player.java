@@ -41,4 +41,9 @@ public interface Player {
 	 * Returns the player's name
 	 */
 	String getName();
+	
+	/**
+	 * Returns the player's piece theme
+	 */
+	String getPieceTheme();
 }

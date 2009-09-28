@@ -40,12 +40,14 @@ import com.boardgamebuddy.core.player.Player;
 public class BasicPlayer implements Player {
 
 	private String name;
+	private String pieceTheme;
 	
 	/**
 	 * Constructor for name
 	 */
-	public BasicPlayer(final String nameIn) {
+	public BasicPlayer(final String nameIn, final String pieceThemeIn) {
 		this.name = nameIn;
+		this.pieceTheme = pieceThemeIn;
 	}
 
 	/**
@@ -53,6 +55,14 @@ public class BasicPlayer implements Player {
 	 */
 	public final String getName() {
 		return name;
+	}
+
+	/**
+	 * Returns player piece theme
+	 */
+	@Override
+	public String getPieceTheme() {
+		return pieceTheme;
 	}
 
 	/**

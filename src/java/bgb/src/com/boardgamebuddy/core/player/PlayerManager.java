@@ -48,4 +48,9 @@ public interface PlayerManager {
 	 * Get all players in the game
 	 */
 	Collection<Player> getPlayers();
+	
+	/**
+	 * Get the player with the given name
+	 */
+	Player getPlayer(String name);
 }

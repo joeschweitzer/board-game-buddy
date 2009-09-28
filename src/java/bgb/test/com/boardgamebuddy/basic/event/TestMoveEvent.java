@@ -55,9 +55,9 @@ public class TestMoveEvent {
 	 */
 	@Test
 	public final void testValues() {
-		Player player = new BasicPlayer("player");
+		Player player = new BasicPlayer("player", "theme1");
 		Space space = new BasicSpace("space");
-		Piece piece = new BasicPieceHelper("piece");
+		Piece piece = new BasicPieceHelper("piece", player);
 		
 		Move move = new BasicMove(player, space, piece);
 		MoveEvent event = new MoveEvent("blah", move);

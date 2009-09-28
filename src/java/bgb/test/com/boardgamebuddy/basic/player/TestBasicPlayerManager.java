@@ -19,7 +19,7 @@ public class TestBasicPlayerManager {
 	@Before
 	public final void setUp() throws Exception {
 		playerManager = new BasicPlayerManager();
-		player = new BasicPlayer("player");
+		player = new BasicPlayer("player", "theme1");
 	}
 
 	/**

@@ -32,7 +32,16 @@
  */
 package com.boardgamebuddy.ui.cmdline;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+import com.boardgamebuddy.basic.move.BasicMove;
+import com.boardgamebuddy.core.board.Piece;
+import com.boardgamebuddy.core.board.Space;
 import com.boardgamebuddy.core.game.Game;
+import com.boardgamebuddy.core.move.Move;
+import com.boardgamebuddy.core.player.Player;
 
 /**
  * Manager to handle interaction with a command line
@@ -48,8 +57,83 @@ public class CommandLineManager {
 		super();
 		this.game = gameIn;
 	}
-
-	public void makeMove(CommandLineMove cmdLineMove) {
+	
+	/**
+	 * Starts command line manager
+	 */
+	public void start() {
+		boolean gameOver = false;
+		BufferedReader in = null;
+		String command = null;
 		
+		while (!gameOver) {
+			try {
+				in = new BufferedReader(new InputStreamReader(System.in));
+				game.getBoardManager().getMainBoard().printBoard();
+				System.out.println();
+				System.out.print("bgb> ");
+				command = in.readLine();
+				String[] commandValues = command.split(" ");
+				
+				CommandLineMove cmdLineMove = new CommandLineMove(
+						commandValues[0], commandValues[1], commandValues[2]);
+				
+				try {
+					makeMove(cmdLineMove);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+				if (game.getScoreManager().getWinner() != null) {
+					gameOver = true;
+					game.getBoardManager().getMainBoard().printBoard();
+					System.out.println();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	/**
+	 * Makes a given move
+	 */
+	public void makeMove(CommandLineMove cmdLineMove) {
+		Move move = getMove(cmdLineMove);
+		
+		game.getMoveManager().makeMove(move);
+	}
+
+	/**
+	 * Converts a CommandLineMove into a move
+	 */
+	private Move getMove(CommandLineMove cmdLineMove) {
+		Player player = 
+			game.getPlayerManager().getPlayer(cmdLineMove.getPlayer());
+		
+		if (player == null) {
+			throw new IllegalArgumentException(
+					"Invalid player: " + cmdLineMove.getPlayer());
+		}
+		
+		Space space = game.getBoardManager().getMainBoard().getSpaceByValue(
+				cmdLineMove.getSpace());
+		
+		if (space == null) {
+			throw new IllegalArgumentException(
+					"Invalid space: " + cmdLineMove.getSpace());
+		}
+		
+		Piece piece = game.getPieceManager().getPiece(
+				player, cmdLineMove.getPiece());
+		
+		if (piece == null) {
+			throw new IllegalArgumentException(
+					"Could not get piece " + cmdLineMove.getPiece());
+		}
+		
+		Move move = new BasicMove(player, space, piece);
+		
+		return move;
 	}
 }

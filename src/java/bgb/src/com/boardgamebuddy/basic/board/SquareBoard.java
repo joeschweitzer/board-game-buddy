@@ -148,7 +148,9 @@ public class SquareBoard implements Board {
 			String value = "";
 			
 			if (space.getPiece() != null) {
-				space.getPiece().getValue();
+				value = space.getPiece().getValue();
+			} else {
+				value = "_";
 			}
 			
 			if (index % size == 0) {

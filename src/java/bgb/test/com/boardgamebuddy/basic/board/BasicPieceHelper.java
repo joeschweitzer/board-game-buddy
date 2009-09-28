@@ -33,6 +33,7 @@
 package com.boardgamebuddy.basic.board;
 
 import com.boardgamebuddy.core.board.Piece;
+import com.boardgamebuddy.core.player.Player;
 
 /**
  * Test helper for a basic piece
@@ -40,12 +41,14 @@ import com.boardgamebuddy.core.board.Piece;
 public class BasicPieceHelper implements Piece {
 
 	private String value;
+	private Player player;
 	
 	/**
 	 * Constructor for value
 	 */
-	public BasicPieceHelper(final String valueIn) {
+	public BasicPieceHelper(final String valueIn, final Player playerIn) {
 		this.value = valueIn;
+		this.player = playerIn;
 	}
 	
 	/**
@@ -53,6 +56,14 @@ public class BasicPieceHelper implements Piece {
 	 */
 	public final String getValue() {
 		return value;
+	}
+
+	/**
+	 * Get player
+	 */
+	@Override
+	public Player getPlayer() {
+		return player;
 	}
 
 	/**
