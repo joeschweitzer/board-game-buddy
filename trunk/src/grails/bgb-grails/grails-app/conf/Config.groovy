@@ -49,7 +49,13 @@ grails.logging.jul.usebridge = true
 grails.spring.bean.packages = []
 
 // request parameters to mask when logging exceptions
-grails.exceptionresolver.params.exclude = ['password']
+grails.exceptionresolver.params.exclude = ['password', 'password2']
+
+// spring security settings
+grails.plugins.springsecurity.userLookup.userDomainClassName = 'bgb.grails.User'
+
+// mail settings
+grails.mail.disabled = true
 
 // set per-environment serverURL stem for creating absolute links
 environments {
