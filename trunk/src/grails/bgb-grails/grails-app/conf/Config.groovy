@@ -1,15 +1,3 @@
-// locations to search for config files that get merged into the main config
-// config files can either be Java properties files or ConfigSlurper scripts
-
-// grails.config.locations = [ "classpath:${appName}-config.properties",
-//                             "classpath:${appName}-config.groovy",
-//                             "file:${userHome}/.grails/${appName}-config.properties",
-//                             "file:${userHome}/.grails/${appName}-config.groovy"]
-
-// if(System.properties["${appName}.config.location"]) {
-//    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
-// }
-
 grails.project.groupId = appName // change this to alter the default package name and Maven publishing destination
 grails.mime.file.extensions = true // enables the parsing of file extensions from URLs into the request format
 grails.mime.use.accept.header = false
@@ -26,9 +14,6 @@ grails.mime.types = [ html: ['text/html','application/xhtml+xml'],
                       form: 'application/x-www-form-urlencoded',
                       multipartForm: 'multipart/form-data'
                     ]
-
-// URL Mapping Cache Max Size, defaults to 5000
-//grails.urlmapping.cache.maxsize = 1000
 
 // The default codec used to encode data with ${}
 grails.views.default.codec = "none" // none, html, base64
@@ -49,10 +34,26 @@ grails.logging.jul.usebridge = true
 grails.spring.bean.packages = []
 
 // request parameters to mask when logging exceptions
-grails.exceptionresolver.params.exclude = ['password', 'password2']
+grails.exceptionresolver.params.exclude = ['password']
 
-// spring security settings
-grails.plugins.springsecurity.userLookup.userDomainClassName = 'bgb.grails.User'
+// Added by the Spring Security Core plugin:
+grails.plugins.springsecurity.userLookup.userDomainClassName = 'bgb.User'
+grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'bgb.UserRole'
+grails.plugins.springsecurity.authority.className = 'bgb.Role'
+
+grails.plugins.springsecurity.rejectIfNoRule = true
+
+grails.plugins.springsecurity.controllerAnnotations.staticRules = [
+	'/index.html':               ['IS_AUTHENTICATED_ANONYMOUSLY'],
+	'/j_spring_security_check':  ['IS_AUTHENTICATED_ANONYMOUSLY'],
+	'/app.js':                   ['IS_AUTHENTICATED_ANONYMOUSLY'],
+	'/app/**':                   ['IS_AUTHENTICATED_ANONYMOUSLY'],
+	'/extjs/**':                 ['IS_AUTHENTICATED_ANONYMOUSLY'],
+	'/css/**':                   ['IS_AUTHENTICATED_ANONYMOUSLY'],
+	'/images/**':                ['IS_AUTHENTICATED_ANONYMOUSLY'],
+	'/login/**':                 ['IS_AUTHENTICATED_ANONYMOUSLY'],
+	'/logout/**':                ['IS_AUTHENTICATED_ANONYMOUSLY']
+]
 
 // mail settings
 grails.mail.disabled = true
@@ -60,12 +61,15 @@ grails.mail.disabled = true
 // set per-environment serverURL stem for creating absolute links
 environments {
     production {
+        grails.logging.jul.usebridge = false
         grails.serverURL = "http://www.changeme.com"
     }
     development {
+        grails.logging.jul.usebridge = true
         grails.serverURL = "http://localhost:8080/${appName}"
     }
     test {
+        grails.logging.jul.usebridge = true
         grails.serverURL = "http://localhost:8080/${appName}"
     }
 
@@ -93,4 +97,7 @@ log4j = {
            'net.sf.ehcache.hibernate'
 
     warn   'org.mortbay.log'
+	
+	trace  'org.hibernate.SQL'//, 'org.hibernate.type'
 }
+
